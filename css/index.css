@@ -1,0 +1,213 @@
+ * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    text-align: center;
+    color: #222;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+    text-decoration: none;
+}
+
+#header {
+    height: 100px;
+    flex: 0 1 auto;
+}
+
+#header > #container {
+    height: 100%;
+    margin: 0 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    height: 60px;
+    line-height: 60px;
+    font-size: 1.5em;
+    color: hsla(0, 0%, 0%, .9);
+    letter-spacing: 5px;
+    animation: move linear 2000ms infinite;
+}
+
+#header-stuffs div {
+    display: inline-block;
+    position: relative;
+    margin: 0 20px 0 0;
+    height: 40px;
+    line-height: 40px;
+    bottom: -5px;
+    -webkit-transition: border-bottom .4s;
+}
+
+#header-stuffs div:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 5px;
+    content: "";
+    background-color:  #222;
+    transition: width 0.3s;
+}
+
+#header-stuffs div:hover {
+   color: #222;
+}
+
+#header-stuffs div:hover:after {
+    width: 100%;
+}
+
+#body {
+    width: 100%;
+    position: relative;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+#body > #container {
+    width: 100%;
+    flex: 0 1 auto;
+}
+
+#body > #container > #title-wrapper {
+    margin: 0 10%;
+    
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    flex: 0 1 auto;
+}
+
+#title h1,p {
+    text-align: left;
+    padding: 10px 0;
+}
+
+#title h1 {
+    font-size: 2.7em;
+}
+
+#title p:after {
+    animation: text_change 5s linear 0s infinite alternate;
+}
+
+#content {
+    width: 40%;
+    float: right;
+    margin: 0 10%;
+    
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    flex: 0 1 auto;
+}
+
+#footer {
+    flex: 0 1 100px;
+    background: rgba(.1, .1, .2, .1);
+}
+
+@keyframes text_change {
+    0% {opacity: 0%}
+    100% {opacity: 100%}
+}
+
+@keyframes move {
+  0% {
+    text-shadow:
+    4px -4px 0 hsla(0, 100%, 50%, 1), 
+    3px -3px 0 hsla(0, 100%, 50%, 1), 
+    2px -2px 0 hsla(0, 100%, 50%, 1), 
+    1px -1px 0 hsla(0, 100%, 50%, 1),
+    -4px 4px 0 hsla(180, 100%, 50%, 1), 
+    -3px 3px 0 hsla(180, 100%, 50%, 1), 
+    -2px 2px 0 hsla(180, 100%, 50%, 1), 
+    -1px 1px 0 hsla(180, 100%, 50%, 1)
+    ;
+}
+25% {    
+    text-shadow:      
+    -4px -4px 0 hsla(180, 100%, 50%, 1), 
+    -3px -3px 0 hsla(180, 100%, 50%, 1), 
+    -2px -2px 0 hsla(180, 100%, 50%, 1), 
+    -1px -1px 0 hsla(180, 100%, 50%, 1),
+    4px 4px 0 hsla(0, 100%, 50%, 1), 
+    3px 3px 0 hsla(0, 100%, 50%, 1), 
+    2px 2px 0 hsla(0, 100%, 50%, 1), 
+    1px 1px 0 hsla(0, 100%, 50%, 1)      
+    ;
+}
+50% {
+    text-shadow:
+    -4px 4px 0 hsla(0, 100%, 50%, 1), 
+    -3px 3px 0 hsla(0, 100%, 50%, 1), 
+    -2px 2px 0 hsla(0, 100%, 50%, 1), 
+    -1px 1px 0 hsla(0, 100%, 50%, 1),
+    4px -4px 0 hsla(180, 100%, 50%, 1), 
+    3px -3px 0 hsla(180, 100%, 50%, 1), 
+    2px -2px 0 hsla(180, 100%, 50%, 1), 
+    1px -1px 0 hsla(180, 100%, 50%, 1)
+    ;
+}
+75% {
+    text-shadow:
+    4px 4px 0 hsla(180, 100%, 50%, 1), 
+    3px 3px 0 hsla(180, 100%, 50%, 1), 
+    2px 2px 0 hsla(180, 100%, 50%, 1), 
+    1px 1px 0 hsla(180, 100%, 50%, 1),
+    -4px -4px 0 hsla(0, 100%, 50%, 1), 
+    -3px -3px 0 hsla(0, 100%, 50%, 1), 
+    -2px -2px 0 hsla(0, 100%, 50%, 1), 
+    -1px -1px 0 hsla(0, 100%, 50%, 1)      
+    ;
+}
+100% {
+    text-shadow:
+    4px -4px 0 hsla(0, 100%, 50%, 1), 
+    3px -3px 0 hsla(0, 100%, 50%, 1), 
+    2px -2px 0 hsla(0, 100%, 50%, 1), 
+    1px -1px 0 hsla(0, 100%, 50%, 1),
+    -4px 4px 0 hsla(180, 100%, 50%, 1), 
+    -3px 3px 0 hsla(180, 100%, 50%, 1), 
+    -2px 2px 0 hsla(180, 100%, 50%, 1), 
+    -1px 1px 0 hsla(180, 100%, 50%, 1)
+    ;
+}  
+}
+
+
+
+@media screen and (max-width: 480px) {
+    #body > #container {
+        align-items: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    #title h1,p {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+}

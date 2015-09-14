@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="23" height="23" tilewidth="32" tileheight="32" nextobjectid="11">
+ <tileset firstgid="1" name="TileSet 1" tilewidth="32" tileheight="32">
+  <image source="../../javascript-tiny-platformer-master/tiles.png" width="160" height="32"/>
+ </tileset>
+ <layer name="map" width="23" height="23">
+  <properties>
+   <property name="height" value="23"/>
+   <property name="width" value="23"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkEEKACAIBF3B/3+5jiKL5cHbBkMYOmyGmcUiG0duueWWW+59cPEC0g1SO5nL79WNxtW5WQ9zv3KznJPc053U/zL3b6bJTrY43DgCuQ==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1">
+  <object id="4" name="monster4" type="mob" x="193.333" y="124" width="32" height="32"/>
+  <object id="6" name="monster3" type="mob" x="317.333" y="302.667" width="32" height="32"/>
+  <object id="7" name="monster2" type="mob" x="446.667" y="321.333" width="32" height="32"/>
+  <object id="8" name="monster1" type="mob" x="560" y="82.6667" width="32" height="32"/>
+  <object id="9" name="player" type="player" x="64" y="480" width="32" height="32"/>
+ </objectgroup>
+</map>
