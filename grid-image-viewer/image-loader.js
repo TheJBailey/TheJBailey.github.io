@@ -14,7 +14,8 @@ $(function() {
 			    success: function (data) {
 			        //List all .png file names in the page
 			        $(data).find("a").filter(function () {return regexp.test($(this).text()) || regexpVid.test($(this).text());}).each(function () {
-			            var filename = this.href.replace(window.location.host, "").replace("http://", "");
+			            var filename = this.href.replace(window.location.host, "").replace("http://", "").replace("/grid-image-viewer/", "");
+			            console.log(filename);
 			            if(regexpVid.test(filename)) $("body").append("<span><div></div><video loop><source src='" + dir + filename + "'></video></span>");
 			            else $("body").append("<span><div></div><img src='" + dir + filename + "'></span>");
 
