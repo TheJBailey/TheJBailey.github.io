@@ -1,6 +1,6 @@
 $(function() {
 
-	var dirs = ["../imgs/"];
+	var dirs = ["imgs/"];
 	var regexp = new RegExp("\.png|\.jpg|\.gif");
 	var regexpVid = new RegExp("\.webm|\.mp4");
 	for(i = 0; i < dirs.length; i++) {
