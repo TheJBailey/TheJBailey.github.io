@@ -1,0 +1,96 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Helvetica';
+	font-size: 1.2em;
+	text-align: center;
+}
+
+body {
+	background: #222222;
+	/*overflow: hidden;*/
+}
+
+span {
+	float: left;
+	display: inline-block;
+	position: relative;
+	width: 12.5%;
+	overflow: hidden;
+
+	transition: width 500ms ease;
+	-webkit-transition: width 500ms ease;
+}
+
+div {
+	margin-top: 100%;
+}
+
+img, video {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;	
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+
+	-webkit-transition: filter 250ms linear;
+	transition: filter 250ms linear;
+	-webkit-transition: -webkit-filter 250ms linear;
+	transition: -webkit-filter 250ms linear;
+}
+
+
+span > img:hover, video:hover {
+	-webkit-filter: brightness(100%);
+	filter: brightness(100%);
+}
+
+.biggify {
+	z-index: 99;
+	position: relative;
+	width: 62.5%;
+	overflow: visible;
+}
+
+.biggify > * {
+	-webkit-filter: brightness(100%); 
+	filter: brightness(100%);
+}
+
+.smallify > * {
+	-webkit-filter: brightness(70%);
+	filter: brightness(70%);
+}
+
+#dropzone {
+	margin: auto;
+	z-index: 9999;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	color: rgba(240, 240, 240, 0);
+	background: rgba(255, 90, 90, 0);
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition: background 300ms ease, color 300ms ease;
+	-webkit-transition: background 300ms ease, color 300ms ease;
+	visibility: hidden;
+}
+
+::-webkit-scrollbar {
+	width: 2px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(255,0,0,1); 
+}

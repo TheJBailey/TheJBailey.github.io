@@ -1,0 +1,14 @@
+{
+  "main": "index.html",
+  "name": "Grid Image Viewer",
+  "window": {
+    "title": "Grid Image Viewer",
+    "icon": "link.png",
+    "frame": false,
+    "width": 800,
+    "height": 500,
+    "position": "center",
+    "min_width": 400,
+    "min_height": 200
+  }
+}

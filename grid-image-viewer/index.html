@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Grid Image Viewer</title>
+		<link rel="stylesheet" type="text/css" href="base.css">
+		<script type="text/javascript" src="jquery/jquery.min.js"></script>
+		<script type="text/javascript">
+			if (typeof process !== "undefined" && process.versions['node-webkit']) {
+				// Load native UI library
+				var gui = require('nw.gui'); 
+				// Get the current window
+				var win = gui.Window.get();
+			}
+		</script>
+		<script type="text/javascript" src="image-loader.js"></script>
+
+	</head>
+	<body>
+		<div id="dropzone">Drag & Drop</br> Folders to Link</div>
+	</body>
+</html>
