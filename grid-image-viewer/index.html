@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Grid Image Viewer</title>
 		<link rel="stylesheet" type="text/css" href="base.css">
+		<link rel="stylesheet" type="text/css" href="jquery.gridster.min.css">
+		
 		<script type="text/javascript" src="jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.gridster.min.js"></script>
+		
 		<script type="text/javascript" src="imgs/dummy.js"></script>
+		
+		<title>Grid Image Viewer</title>
+		
 		<script type="text/javascript">
 			if (typeof process !== "undefined" && process.versions['node-webkit']) {
 				// Load native UI library
@@ -13,10 +19,12 @@
 				var win = gui.Window.get();
 			}
 		</script>
-		<script type="text/javascript" src="image-loader.js"></script>
+		
 
 	</head>
 	<body>
-		<div id="dropzone">Drag & Drop</br> Folders to Link</div>
+		<div id="dropzone">Drag & Drop</br>Folders to Link</div>
+		<div classs="gridster"><ul></ul></div>
+		<script type="text/javascript" src="image-loader.js"></script>
 	</body>
 </html>
