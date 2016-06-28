@@ -88,15 +88,15 @@
 								}
 								var ratio = getClosestRatio(content_width, content_height);
 								var $widget = gridster.resize_widget($(this).addClass('active'), ratio[0], ratio[1]);
-								var scroll_distance = columns - ($widget.offset().left / size) - ratio[0];
+								var tile_overflow = columns - ($widget.offset().left / size) - ratio[0];
 								
 								var index = $('li').index($(this));
 								var scroll = (Math.floor((index / columns)) - .5) * size;
 
-								if(scroll_distance < 0) scroll_distance *= size * -1;
+								console.log($(this));
+								if(tile_overflow < 0) gridster.manage_movements($(this), columns + tile_overflow, 0);
 								console.log(scroll);
 								$(document.body).animate({
-									scrollLeft: scroll_distance,
 									scrollTop: scroll
 								}, 250, 'linear');
 								
