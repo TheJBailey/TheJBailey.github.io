@@ -1,68 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>The Heart is Here...</title>
+	<title>homepage</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	<script src="main.js"></script>
 </head>
-<body onresize="reload()">
-
-	<header>
-		<h1> The <i class="fa fa-heart" aria-hidden="true" style="color: #FF4772"></i> is Here... </h1>
-		<!--search bar-->
-	</header>
-
+<body>
 	<section>
-		<div id="general" class="category">
-			<h3><span>general</span></h3>
-			<div class="sub-category">
-				<h4><a href="https://www.youtube.com/">youtube</a></h4>
-				<h4><a href="https://www.amazon.com/">amazon</a></h4>
-				<h4><a href="https://sketch.io/sketchpad/">skecthpad.io</a></h4>
-				<h4><a href="https://hangouts.google.com/">hangouts</a></h4>
+		
+		<div id="content-left">
+			<div id=stuff>
+				<div id="title">
+					<h1>hiya!</h1>
+				</div>
+				<div id="links">
+					<ul>
+						<li><a href="https://www.4chan.org">4chan</a></li>
+						<li><a href="https://www.4chan.org/g/">/g/</a></li>
+						<li><a href="https://www.4chan.org/fa/">/fa/</a></li>
+						<li><a href="https://www.4chan.org/wg/">/wg/</a></li>
+						<li><a href="https://www.4chan.org/wsg/">/wsg/</a></li>
+						<li><a href="https://www.4chan.org/sci/">/sci/</a></li>
+					</ul>
+					<ul>
+						<li><a href="https://mail.google.com/mail/u/0/">gmail</a></li>
+						<li><a href="https://www.youtube.com/">youtube</a></li>
+						<li><a href="https://www.amazon.com/">amazon</a></li>
+						<li><a href="https://sketch.io/sketchpad/">sketchpad</a></li>
+						<li><a href="https://hangouts.google.com/">hangouts</a></li>
+					</ul>
+					<ul>
+						<li><a href="https://elearning.utdallas.edu/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_1_1">e-learning</a></li>
+						<li><a href="http://www.wolframalpha.com/">wolfram</a></li>
+						<li><a href="https://www.desmos.com/calculator">desmos</a></li>
+						<li><a href="https://www.reddit.com/r/GlobalOffensive/">/r/csgo</a></li>
+						<li><a href="https://www.reddit.com/r/Smite/">/r/smite</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div id="searchbar">
+				<form method="get" action="https://www.google.com/search"><input type="text" autocomplete="off" name="q"></form>
 			</div>
 		</div>
-		<div id="Dev" class="category">
-			<h3><span>dev</span></h3>
-			<div class="sub-category">
-				<h4><a href="https://github.com/">github</a></h4>
-				<h4><a href="https://bitbucket.org/">bitbucket</a></h4>
-			</div>
-		</div>
-		<div id="4chan" class="category">
-			<h3><span>4chan</span></h3>
-			<div class="sub-category">
-				<h4><a href="http://boards.4chan.org/g/">/g/</a></h4>
-				<h4><a href="http://boards.4chan.org/wsg/">/wsg/</a></h4>
-				<h4><a href="http://boards.4chan.org/wg/">/wg/</a></h4>
-				<h4><a href="http://boards.4chan.org/fa/">/fa/</a></h4>
-			</div>
-		</div>
-		<div id="reddit" class="category">
-			<h3><span>reddit</span></h3>
-			<div class="sub-category">
-				<h4><a href="https://www.reddit.com/r/programming/">programming</a></h4>
-				<h4><a href="https://www.reddit.com/r/gifs/">gifs</a></h4>
-				<h4><a href="https://www.reddit.com/r/gaming/">gaming</a></h4>
-				<h4><a href="https://www.reddit.com/r/jokes/">jokes</a></h4>
-				<h4><a href="https://www.reddit.com/r/mildyinteresting/">mildyinteresting</a></h4>
-			</div>
-		</div>
-		<div id="searchbar-wrapper">
-			<div id='searchbar'>
-				<span id="icon"><i class="fa fa-search"></i></span>
-				<form method="get" action="https://www.google.com/search">
-					<input id="search" type="text" name="q" size="31" value="" autocomplete="off">
-				</form>
-			</div>
-		</div>
+
+		<div id="content-right"></div>
+
 	</section>
-
-	<footer>
-		<!-- time / animation -->
-	</footer>
-
-	<script type="text/javascript">	</script>
+	<footer></footer>
 </body>
 </html>
