@@ -112,3 +112,21 @@ hr.style {
     z-index: 3;
   }
 }
+
+content > #sign {
+  font-size: 4em;
+}
+
+content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+  color:white;
+  text-align: center;
+}
+
+content > * {
+ margin: 20px;
+}
