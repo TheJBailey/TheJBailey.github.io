@@ -1,86 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="base.css">
-    <link rel="stylesheet" href="hamburgers.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Yo!</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" href="css/slidebars.min.css">
+    <link rel="stylesheet" href="css/hamburgers.css">
+
+    <title>JBailey</title>
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
-
-<header>
-    <div id="main-img">
-        <p>&#x270C;&#xFE0F;</p>
-    </div>
-    
-    <div id="navigation">
-        <nav>
-            <a href=""><div>home</div></a>
-            <a href=""><div>projects</div></a>
-            <a href=""><div>bio</div></a>
-            <a href=""><div>contact</div></a>
-            <a href=""><div>misc.</div></a>
-        </nav>
-    </div>
-
-    <div id="nav-button">
-       <div class="hamburger hamburger--collapse">
-        <div class="hamburger-box">
-          <div class="hamburger-inner"></div>
+  <div canvas="container">
+    <div id="content">
+      <header>
+        <div id="main-img">
+          <p>&#x270C;&#xFE0F;</p>
         </div>
-      </div>
-    </div>
-    
-    <div class="hide" id="mobile-nav">
-         <nav>
+          
+        <div id="navigation">
+          <nav>
             <a href=""><div>home</div></a>
-            <hr class="style">
             <a href=""><div>projects</div></a>
-            <hr class="style">
             <a href=""><div>bio</div></a>
-            <hr class="style">
             <a href=""><div>contact</div></a>
-            <hr class="style">
             <a href=""><div>misc.</div></a>
-        </nav>
+          </nav>
+        </div>
+
+        <button class="nav_button hamburger hamburger-spin" type="button">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+      </header>
+
+      <content>
+
+              <p id="sign">&#x1F6A7;</p>
+              <p>under construction</p>
+         
+      </content>
+
+      <footer></footer>
     </div>
-</header>
+  </div>
+  
+  <div class="mobile-menu" off-canvas="id-1 left reveal">
+  </div>
 
-<content>
-
-        <p id="sign">&#x1F6A7;</p>
-        <p>under construction</p>
-   
-</content>
-
-<footer></footer>
-
+<script src="js/jquery.min.js"></script>
+<script src="js/slidebars.min.js"></script>
 <script>
-  /**
-   * forEach implementation for Objects/NodeLists/Arrays, automatic type loops and context options
-   *
-   * @private
-   * @author Todd Motto
-   * @link https://github.com/toddmotto/foreach
-   * @param {Array|Object|NodeList} collection - Collection of items to iterate, could be an Array, Object or NodeList
-   * @callback requestCallback      callback   - Callback function for each iteration.
-   * @param {Array|Object|NodeList} scope=null - Object/NodeList/Array that forEach is iterating over, to use as the this value when executing callback.
-   * @returns {}
-   */
-    var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
+  (function ($) {
+    var controller = new slidebars();
+    controller.init();
 
-    var hamburgers = document.querySelectorAll(".hamburger");
-    var mobile_nav = document.getElementById("mobile-nav");
-    if (hamburgers.length > 0) {
-      forEach(hamburgers, function(hamburger) {
-        hamburger.addEventListener("click", function() {
-          this.classList.toggle("is-active");
-          if(this.parentNode.id == "nav-button") mobile_nav.classList.toggle("hide");
-        }, false);
-      });
-    }
-  </script>
+    $('.nav_button').on('click', function(event) {
+      // Stop default action and bubbling
+      event.stopPropagation();
+      event.preventDefault();
+
+      $(this).toggle('is-active');
+      // Toggle the Slidebar with id 'id-1'
+      controller.toggle('id-1');
+
+    });
+  } ) ( jQuery );
+</script>
+
+
 </body>
 </html>

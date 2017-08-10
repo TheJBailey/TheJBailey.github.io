@@ -12,11 +12,13 @@ a {
 body {
 	width: 100vw;
 	height: 100vh;
+}
+
+#content {
 	background: #1f2530;
 	display: flex;
 	flex-flow: column;
 	align-items: center;
-
 }
 
 header, content, footer {
@@ -28,12 +30,13 @@ header {
 	height: 20%;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 hr.style {
   height: 6px;
   background: url(hr.png) repeat-x 0 0;
-    border: 0;
+  border: 0;
 }
 
 #main-img {
@@ -67,50 +70,10 @@ hr.style {
 	cursor: pointer;
 }
 
-#nav-button {
-  display: none;
-}
-
-#mobile-nav {
-  width:100vw;
-  height:100vh;
-  background: rgba(255, 175, 219, .9);
-  transition: background 200ms ease;
-  z-index: 2;
-  bottom: 0;
-  right: 0;
-  position: fixed;
-  visibility: visible;
-  display: flex;
-  justify-content: center;
-}
-
-.hide {
-  background: rgba(255, 175, 219, 0) !important;
-  visibility: hidden !important;
-}
-
-#mobile-nav nav {
-  font-size: 3em;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-  margin-top: 150px;
-  margin-bottom: 150px;
-  text-align: center;
-  letter-spacing: 2px;
-}
-
 @media screen and (max-width: 1120px) {
 	#navigation {
 		display: none;
 	}
-  
-  #nav-button {
-    display: flex;
-    align-items: center;
-    z-index: 3;
-  }
 }
 
 content > #sign {
