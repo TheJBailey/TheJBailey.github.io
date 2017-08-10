@@ -29,7 +29,7 @@
           </nav>
         </div>
 
-        <button class="nav_button hamburger hamburger-spin" type="button">
+        <button id="nav_button" class="hamburger hamburger--arrow" type="button">
           <span class="hamburger-box">
             <span class="hamburger-inner"></span>
           </span>
@@ -47,7 +47,7 @@
     </div>
   </div>
   
-  <div class="mobile-menu" off-canvas="id-1 left reveal">
+  <div class="mobile-menu" off-canvas="id-1 left overlay">
   </div>
 
 <script src="js/jquery.min.js"></script>
@@ -57,12 +57,12 @@
     var controller = new slidebars();
     controller.init();
 
-    $('.nav_button').on('click', function(event) {
+    $('#nav_button').on('click', function(event) {
       // Stop default action and bubbling
       event.stopPropagation();
       event.preventDefault();
-
-      $(this).toggle('is-active');
+      
+      $(this).toggleClass('is-active');
       // Toggle the Slidebar with id 'id-1'
       controller.toggle('id-1');
 
