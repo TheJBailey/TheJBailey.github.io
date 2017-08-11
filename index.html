@@ -12,42 +12,49 @@
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
-  <div canvas="container">
-    <div id="content">
-      <header>
-        <div id="main-img">
-          <p>&#x270C;&#xFE0F;</p>
-        </div>
-          
-        <div id="navigation">
-          <nav>
-            <a href=""><div>home</div></a>
-            <a href=""><div>projects</div></a>
-            <a href=""><div>bio</div></a>
-            <a href=""><div>contact</div></a>
-            <a href=""><div>misc.</div></a>
-          </nav>
-        </div>
+  <button id="nav_button" class="hamburger hamburger--arrow" type="button">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
 
-        <button id="nav_button" class="hamburger hamburger--arrow" type="button">
-          <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-          </span>
-        </button>
-      </header>
+  <div id="content" canvas="container">
+    <header>
+      <div id="main-img">
+        <p>&#x270C;&#xFE0F;</p>
+      </div>
+        
+      <div id="navigation">
+        <nav>
+          <a href=""><div>home</div></a>
+          <a href=""><div>projects</div></a>
+          <a href=""><div>bio</div></a>
+          <a href=""><div>contact</div></a>
+          <a href=""><div>misc.</div></a>
+        </nav>
+      </div>
 
-      <content>
+    </header>
 
-              <p id="sign">&#x1F6A7;</p>
-              <p>under construction</p>
-         
-      </content>
+    <content>
+      <div><img src="/assets/one.jpg"></div>
+      <div><img src="/assets/two.png"></div>
+      <div><img src="/assets/three.jpg"></div>
+      <div><img src="/assets/four.png"></div>
+    </content>
 
-      <footer></footer>
-    </div>
+    <footer></footer>
   </div>
   
-  <div class="mobile-menu" off-canvas="id-1 left overlay">
+  <div id="mobile_menu" off-canvas="id-1 left reveal">
+    <ul>
+      <li><div>home</div></li>
+      <li><div>portfolio</div></li>
+      <li><div>about me</div></li>
+      <li><div>item</div></li>
+      <li><div>item</div></li>
+      <li><div>item</div></li>
+    </ul>
   </div>
 
 <script src="js/jquery.min.js"></script>
@@ -61,7 +68,7 @@
       // Stop default action and bubbling
       event.stopPropagation();
       event.preventDefault();
-      
+
       $(this).toggleClass('is-active');
       // Toggle the Slidebar with id 'id-1'
       controller.toggle('id-1');

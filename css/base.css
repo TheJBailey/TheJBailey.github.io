@@ -11,19 +11,19 @@ a {
 
 body {
 	width: 100vw;
-	height: 100vh;
+	overflow-y: scroll;
 }
 
 #content {
-	width: inherit;
-	height: inherit;
+	width: 100vw;
+	height: auto;
 	background: #1f2530;
 	display: flex;
 	flex-flow: column;
 	align-items: center;
 }
 
-header, content, footer {
+header, footer {
 	width:70%;
 }
 
@@ -73,7 +73,43 @@ hr.style {
 }
 
 #nav_button {
+	z-index: 1000;
 	visibility: hidden;
+	position: fixed;
+	border: none;
+    outline: none;
+	right: 10%;
+	top: 8%;
+}
+
+#nav_button:focus {
+	outline: 0;
+}
+
+.hamburger-inner {
+
+}
+
+#mobile_menu {
+	visibility: hidden;
+	width: 400px;
+	background: #6d171f;
+	border: none;
+}
+
+#mobile_menu > ul {
+	width: 100%;
+}
+
+#mobile_menu > ul > li {
+	padding: 10px 0;
+	border-top: 1px solid black;
+	border
+}
+
+#mobile_menu > ul > li > div {
+	padding: 5%;
+	font-size: 2em;
 }
 
 @media screen and (max-width: 1120px) {
@@ -81,7 +117,7 @@ hr.style {
 		display: none;
 	}
 
-	#nav_button {
+	#nav_button, #mobile_menu {
 		visibility: visible;
 	}
 }
@@ -91,15 +127,22 @@ content > #sign {
 }
 
 content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 5em;
-  color:white;
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 5em;
+	color:white;
+	text-align: center;
 }
 
-content > * {
- margin: 20px;
+content > div {
+	width: 100%;
+}
+
+content > div > img {
+	display: block;
+	width: 100%;
+	width: auto;
+	height: auto;
 }
