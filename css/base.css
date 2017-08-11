@@ -11,7 +11,8 @@ a {
 
 body {
 	width: 100vw;
-	overflow-y: scroll;
+	overflow-x: hidden !important;
+	overflow-y: scroll !important;
 }
 
 #content {
@@ -93,7 +94,7 @@ hr.style {
 #mobile_menu {
 	visibility: hidden;
 	width: 400px;
-	background: #6d171f;
+	background: #232323;
 	border: none;
 }
 
@@ -103,13 +104,15 @@ hr.style {
 
 #mobile_menu > ul > li {
 	padding: 10px 0;
-	border-top: 1px solid black;
-	border
 }
 
 #mobile_menu > ul > li > div {
 	padding: 5%;
 	font-size: 2em;
+}
+
+#mobile_menu > ul > li > div:hover {
+	background: #383838;
 }
 
 @media screen and (max-width: 1120px) {
@@ -143,6 +146,5 @@ content > div {
 content > div > img {
 	display: block;
 	width: 100%;
-	width: auto;
 	height: auto;
 }
