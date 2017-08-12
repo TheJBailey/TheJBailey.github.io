@@ -12,17 +12,17 @@
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
-  <button id="nav_button" class="hamburger hamburger--arrow" type="button">
-    <span class="hamburger-box">
-      <span class="hamburger-inner"></span>
-    </span>
-  </button>
-
-  <div id="content" canvas="container">
+  <div id="site" class="nav_hide" canvas="container">
     <header>
-      <div id="main-img">
+      <div id="main-img" class='noselect defualt'>
         <p>&#x270C;&#xFE0F;</p>
       </div>
+
+      <button id="nav_button" class="hamburger hamburger--arrow nav_toggle noselect pointer" type="button">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
         
       <div id="navigation">
         <nav>
@@ -37,23 +37,24 @@
     </header>
 
     <content>
-      <div><img src="/assets/one.jpg"></div>
-      <div><img src="/assets/two.png"></div>
-      <div><img src="/assets/three.jpg"></div>
-      <div><img src="/assets/four.png"></div>
+      <div id="uc">
+        <span id='text'>under construction</span>
+        <span id="sign">🚧</span>
+      </div>
+      
     </content>
 
     <footer></footer>
   </div>
   
-  <div id="mobile_menu" off-canvas="id-1 left reveal">
+  <div id="mobile_menu" off-canvas="id-1 right reveal">
+    <div class='logo noselect default'><span>✌️</span>:victory-hand:</div>
     <ul>
-      <li><div>home</div></li>
-      <li><div>portfolio</div></li>
-      <li><div>about me</div></li>
-      <li><div>item</div></li>
-      <li><div>item</div></li>
-      <li><div>item</div></li>
+      <li class="noselect"><div class='pointer'><span>🏠</span>home</div></li>
+      <li class="noselect"><div class='pointer'><span>📁</span>projects</div></li>
+      <li class="noselect"><div class='pointer'><span>👻</span>about me</div></li>
+      <li class="noselect"><div class='pointer'><span>📇</span>contact</div></li>
+      <li class="noselect"><div class='nav_hide pointer'><span>❌</span>close</div></li>
     </ul>
   </div>
 
@@ -64,17 +65,35 @@
     var controller = new slidebars();
     controller.init();
 
-    $('#nav_button').on('click', function(event) {
+    var burger = $('#nav_button');
+    function nav_interact(event) {
       // Stop default action and bubbling
       event.stopPropagation();
       event.preventDefault();
 
-      $(this).toggleClass('is-active');
-      // Toggle the Slidebar with id 'id-1'
-      controller.toggle('id-1');
+      if(event.data.action == 'toggle') {
+        burger.toggleClass('is-active');
+        controller.toggle('id-1');
+        return;
+      }
 
-    });
-  } ) ( jQuery );
+      if(event.data.action == 'show') {
+        burger.addClass('is-active');
+        controller.open('id-1');
+        return;
+      }
+
+      if(event.data.action == 'hide') {
+        burger.removeClass('is-active');
+        controller.close('id-1');
+        return;
+      }
+    }
+
+    $('.nav_toggle').on('click', {action: 'toggle'}, nav_interact);
+    $('.nav_show').on('click', {action: 'show'}, nav_interact);
+    $('.nav_hide').on('click', {action: 'hide'}, nav_interact);
+  })(jQuery);
 </script>
 
 
