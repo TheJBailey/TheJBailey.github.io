@@ -23,7 +23,7 @@
           <span class="hamburger-inner"></span>
         </span>
       </button>
-        
+
       <div id="navigation">
         <nav>
           <a href=""><div>home</div></a>
@@ -37,18 +37,32 @@
     </header>
 
     <content>
-      <div id="uc">
+     <!--<div id="uc">
         <span id='text'>under construction</span>
         <span id="sign">🚧</span>
+      </div>-->
+      <div class="section" id='section-1'>
+        <div id="title-wrapper">
+          <span>Hey, I'm Jordan</span><div id="changingTitle"></div>
+        </div>
+        <span id="d-pointer" class="pointer">&#x1F447;</span>
       </div>
-      
+
+      <div class="section" id='section-2'>
+        <div id="uc">
+           <span id='text'>under construction</span>
+           <span id="sign">🚧</span>
+         </div>
+      </div>
+
+
     </content>
 
     <footer></footer>
   </div>
-  
+
   <div id="mobile_menu" off-canvas="id-1 right reveal">
-    <div class='logo noselect default'><span>✌️</span>:victory-hand:</div>
+    <div class='logo noselect default'><span class="icon">✌️</span><span class='text'>:victory-hand:</span></div>
     <ul>
       <li class="noselect"><div class='pointer'><span>🏠</span>home</div></li>
       <li class="noselect"><div class='pointer'><span>📁</span>projects</div></li>
@@ -59,6 +73,7 @@
   </div>
 
 <script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script src="js/slidebars.min.js"></script>
 <script>
   (function ($) {
@@ -93,6 +108,12 @@
     $('.nav_toggle').on('click', {action: 'toggle'}, nav_interact);
     $('.nav_show').on('click', {action: 'show'}, nav_interact);
     $('.nav_hide').on('click', {action: 'hide'}, nav_interact);
+
+    $('#d-pointer').on('click', function(){
+      $('html, body').animate({
+        scrollTop: $("#section-2").offset().top
+      }, 2000, "easeInOutQuart");
+    });
   })(jQuery);
 </script>
 

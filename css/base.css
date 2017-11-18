@@ -18,7 +18,7 @@
 
 a {
 	text-decoration: none;
-	color: white;
+	color: #fff;
 }
 
 body {
@@ -48,6 +48,8 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	z-index: 1;
+	top: 0;
 }
 
 hr.style {
@@ -82,6 +84,13 @@ hr.style {
 #navigation nav a > div {
 	display: inline-block;
 	cursor: pointer;
+	padding: 2px 5px;
+	transition: 200ms linear;
+}
+
+#navigation nav a > div:hover {
+	background: #000;
+	color: #fff;
 }
 
 #nav_button {
@@ -119,7 +128,7 @@ hr.style {
 	margin: 10% 0;
 }
 
-#mobile_menu .logo span {
+#mobile_menu .logo .icon {
 	margin: 0 9%;
 }
 
@@ -132,15 +141,10 @@ hr.style {
 #mobile_menu > ul > li > div span {
 	padding: 0 15px;
 	font-size: .8em;
-	transition: 300ms ease;
 }
 
 #mobile_menu > ul > li > div:hover {
 	background: #383838;
-}
-
-#mobile_menu > ul > li > div:hover > span {
-	transform: scale(2, 0.5);
 }
 
 @media screen and (max-width: 1120px) {
@@ -157,18 +161,100 @@ content > #sign {
   font-size: 4em;
 }
 
+@media screen and (max-width: 700px) {
+	#uc > #text {
+		font-size: .8em;
+	}
+
+	#mobile_menu {
+		width: 250px;
+	}
+
+	#mobile_menu .logo {
+		display: flex;
+		justify-content: center;
+		font-size: 5em;
+		margin: 7% 0;
+	}
+
+	#mobile_menu .logo .text {
+		display: none;
+	}
+
+	#mobile_menu > ul > li > div {
+		font-size: 1.5em;
+	}
+}
+
 content {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	font-size: 5em;
+	width: 100%;
+	font-size: 4em;
 	color:white;
 	text-align: center;
 }
 
-content > div {
+content > .section {
+	margin: 0 auto;
+	width: 70%;
+	height: 100vh;
+	position: relative;
+}
+
+#title-wrapper {
+	position: absolute;
+	top: 50%;
+	margin-top: -150px;
+	height: 200px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+@keyframes change {
+	0% { content:"gamer"; }
+	7% 	{opacity: 1;} 10% { opacity: 0; } 13% {opacity: 1; }
+	20% { content:"streamer"; opacity: 1; }
+	27% {opacity: 1; } 30% { opacity: 0; } 33% {opacity: 1; }
+	40% { content:"designer"; opacity: 1; }
+	47% 	{opacity: 1; } 50% { opacity: 0; } 53% {opacity: 1; }
+	60% { content:"developer"; opacity: 1; }
+	67% 	{opacity: 1; } 70% { opacity: 0; } 73% {opacity: 1; }
+	80% { content: "creator"; opacity: 1; }
+	87% 	{opacity: 1; } 90% { opacity: 0; } 93% {opacity: 1; }
+	100% { content: "gamer"; opacity: 1; }
+}
+
+#changingTitle {
+	margin-left: 20px;
+	padding: 10px 15px;
+	background: #000;
+	color: #fff;
+}
+
+#changingTitle:after {
+	content: "";
+  animation: change 15s linear infinite;
+}
+
+@keyframes float {
+	0% { bottom: 3%; }
+	50% { bottom: 5%; }
+}
+
+#d-pointer {
+	position: absolute;
+	bottom: 3%;
+	left: 48%;
+	font-size: 40px;
+	animation: float 2s ease infinite;
+}
+
+#section-2 {
 	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
 }
 
 #uc {
@@ -182,7 +268,7 @@ content > div {
 }
 
 #uc > #text {
-	margin-top: 35%; 
+	margin-top: 35%;
 }
 
 #uc > #sign {
