@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+input[type=text] {border: none;text-align: center;}
+input[type=text]:focus {outline: none;}
+::-webkit-input-placeholder {color: #AEFDDB;}
+::-moz-placeholder {color: #AEFDDB;}
+:-ms-input-placeholder {color: #AEFDDB;}
+:-moz-placeholder {color: #AEFDDB;}
+
+body {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+}
+
+.menu {
+  position: absolute;
+  width: 55vw;
+  height: 55vw;
+  background: #fff;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.active {
+  visibility: visible;
+}
+
+.title {
+  font-size: 5em;
+  color: #36FBB3;
+  margin: 16% 0;
+}
+
+.button {
+  margin: 2%;
+  width: 26.5%;
+  height: 9.5%;
+  background: #36FBB3;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4em;
+  transition: 200ms ease all;
+  cursor: pointer;
+}
+
+.input[type=text] {
+  margin: 2%;
+  width: 26.5%;
+  height: 9.5%;
+  background: #36FBB3;
+  font-size: 1.4em;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 26.5%;
+  height: 19%;
+  margin: 2%;
+  background: #36FBB3;
+}
+
+.slider > input:focus { outline: none; }
+
+.slider > input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  margin-top: -9px;
+}
+
+.slider > input {
+  -webkit-appearance: none;
+  width: 60%;
+  background: transparent;
+}
+
+.slider > input::-webkit-slider-runnable-track {
+  width: 60%;
+  height: 2px;
+  cursor: pointer;
+  background: #fff;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #fff;
+}
+
+.in-game {
+  color: #36FBB3;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 480px;
+  margin-top: -4%;
+}
+
+.disclaimer {
+  position: absolute;
+  font-style: italic;
+  font-size: 1em;
+  color: #36FBB3;
+  bottom: 15px;
+}
