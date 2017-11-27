@@ -18,11 +18,12 @@
       }
 
       #canvas {
+        z-index: 0;
       }
     </style>
   </head>
-  <body class='noselect'>
-    <div id='main' class='menu active'>
+  <body class='day noselect'>
+    <div id='main' class='menu'>
       <div class="title">square click</div>
       <div goto='play' class="button hvr-bob">play</div>
       <div goto='options' class="button hvr-bob">options</div>
@@ -59,17 +60,21 @@
     </div>
     <div id='options' class='menu'>
       <div class="title">options</div>
-      <div class="slider">
-        sound
-        <input type="range" name="" value="50%">
-        <span class='value'></span>
-      </div>
+      <label class="switch">
+        <input class='day-night' type="checkbox">
+        <span class="slider"></span>
+      </label>
+      <div class="label">volume</div>
+      <span class="volume">
+        <div action='vol down' class="button"><</div>
+        <div action='vol up' class="button">></div>
+      </span>
       <div goto='main' class="button hvr-bob">back</div>
     </div>
     <canvas id="canvas" width="600" height="600"></canvas>
-    <div class="in-game">
+    <div class="in-game hidden">
       <span id="score">score: 0</span>
-      <span>options</span>
+      <span id='in-game-options'>options</span>
     </div>
     <div class="disclaimer">*under devlopement not all features may be functional*</div>
   </body>
@@ -184,13 +189,26 @@
     }
 
     $(function() {
+      $('.day-night').click(function() {
+        $('body').toggleClass('day');
+        $('body').toggleClass('night');
+      });
+
+      $('#in-game-options').click(function() {
+        console.log('in-game');
+        $('#options').removeClass('hidden').addClass('active');
+      });
+
+      $('#main').toggleClass('active');
       $('.button').click(function() {
         $('.active').removeClass('active');
         var menu = $(this).attr('goto');
         if(menu != null) {
           if (menu.startsWith('game')) {
             mode = menu.split(' ')[1];
-            setTimeout(function(){MainLoop.setUpdate(update).setDraw(render).start();}, 1000);
+            $('.menu').toggleClass('hidden');
+            $('.in-game').toggleClass('hidden');
+            setTimeout(function(){MainLoop.setUpdate(update).setDraw(render).start();}, 0);
           } else $("#"+menu).addClass('active');
         }
       });
