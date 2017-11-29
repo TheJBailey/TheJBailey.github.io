@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>rlxn</title>
+
+    <style>
+      * {margin: 0; padding: 0;}
+
+      .video-wrapper {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        overflow: hidden;
+      }
+
+      .video-wrapper > video {
+        position: absolute;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
+
+      .dim {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="video-wrapper">
+      <video id='video' src="illy_pump.mp4" autoplay loop poster="rlxn.png">
+
+      </video>
+
+      <div class="dim">
+
+      </div>
+
+      <script type="text/javascript">
+        var video = document.getElementById('video');
+        video.volume = .08;
+
+      </script>
+    </div>
+  </body>
+</html>
