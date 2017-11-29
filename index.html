@@ -26,11 +26,8 @@
 
       <div class="noselect" id="navigation">
         <nav>
-          <a href=""><div>home</div></a>
           <a href=""><div>projects</div></a>
           <a href=""><div>bio</div></a>
-          <a href=""><div>contact</div></a>
-          <a href=""><div>misc.</div></a>
         </nav>
       </div>
 
@@ -43,18 +40,19 @@
       </div>-->
       <div class="noselect section" id='section-1'>
         <div id="title-wrapper">
-          <span>Hey, I'm Jordan</span><div id="changingTitle"></div>
+          <div id="changingTitle"></div>
         </div>
         <span id="d-pointer" class="pointer">&#x1F447;</span>
       </div>
 
       <div class="noselect section" id='section-2'>
-        <div id="uc">
-           <span id='text'>under construction</span>
-           <span id="sign">🚧</span>
-         </div>
+        <div class="projects">
+          <a href="http://www.jbailey.xyz/projects/squareclick/"><div class="item">Square Click</div></a>
+          <a href="https://winterbeam.github.io/"><div class="item">Winterbeam</div></a>
+          <div class="item">WYD?</div>
+          <div class="item">lifeless</div>
+        </div>
       </div>
-
 
     </content>
 
@@ -109,10 +107,14 @@
     $('.nav_show').on('click', {action: 'show'}, nav_interact);
     $('.nav_hide').on('click', {action: 'hide'}, nav_interact);
 
-    $('#d-pointer').on('click', function(){
-      $('html, body').animate({
-        scrollTop: $("#section-2").offset().top
-      }, 2000, "easeInOutQuart");
+    var container = $('html, body'),
+        section1  = $('#section-1'),
+        section2  = $("#section-2");
+
+    $('#d-pointer').on('click', function() {
+      container.animate({
+        scrollTop: section2.offset().top + Math.abs(section1.offset().top)
+      }, 1500, "easeInOutQuart");
     });
   })(jQuery);
 </script>
