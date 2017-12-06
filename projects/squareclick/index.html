@@ -25,38 +25,38 @@
   <body class='day noselect'>
     <div id='main' class='menu'>
       <div class="title">square click</div>
-      <div goto='play' class="button hvr-bob">play</div>
-      <div goto='options' class="button hvr-bob">options</div>
+      <div action='menu play' class="button hvr-bob">play</div>
+      <div action='menu options' class="button hvr-bob">options</div>
     </div>
     <div id='play' class='menu'>
       <div class="title">square click</div>
-      <div goto='modes' class="button hvr-bob">singleplayer</div>
-      <div goto='multi' class="button hvr-bob">multiplayer</div>
-      <div goto='main' class="button hvr-bob">back</div>
+      <div action='menu modes' class="button hvr-bob">singleplayer</div>
+      <div action='menu multi' class="button hvr-bob">multiplayer</div>
+      <div action='menu main' class="button hvr-bob">back</div>
     </div>
     <div id='modes' class='menu'>
       <div class="title">square click</div>
-      <div goto='game race' class="button hvr-bob">race</div>
-      <div goto='game endless' class="button hvr-bob">endless race</div>
-      <div goto='game chill' class="button hvr-bob">chill</div>
-      <div goto='play' class="button hvr-bob">back</div>
+      <div action='game race' class="button hvr-bob">race</div>
+      <div action='game endless' class="button hvr-bob">endless race</div>
+      <div action='game chill' class="button hvr-bob">chill</div>
+      <div action='menu play' class="button hvr-bob">back</div>
     </div>
     <div id='multi' class='menu'>
       <div class="title">square click</div>
-      <div goto='host' class="button hvr-bob">host</div>
-      <div goto='join' class="button hvr-bob">join</div>
-      <div goto='play' class="button hvr-bob">back</div>
+      <div action='menu host' class="button hvr-bob">host</div>
+      <div action='menu join' class="button hvr-bob">join</div>
+      <div action='menu play' class="button hvr-bob">back</div>
     </div>
     <div id='host' class='menu'>
       <div class="title">square click</div>
       <div class="button"><span></span></div>
-      <div goto='multi' class="button hvr-bob">back</div>
+      <div action='menu multi' class="button hvr-bob">back</div>
     </div>
     <div id='join' class='menu'>
       <div class="title">square click</div>
       <input class="input" type="text" name="" value="" placeholder="enter code">
-      <div goto='game' class="button hvr-bob">join</div>
-      <div goto='multi' class="button hvr-bob">back</div>
+      <div action='game join' class="button hvr-bob">join</div>
+      <div action='menu multi' class="button hvr-bob">back</div>
     </div>
     <div id='options' class='menu'>
       <div class="title">options</div>
@@ -69,51 +69,25 @@
         <div action='vol down' class="button"><</div>
         <div action='vol up' class="button">></div>
       </span>
-      <div goto='main' class="button hvr-bob">back</div>
+      <div action='menu main' class="button hvr-bob">back</div>
     </div>
     <canvas id="canvas" width="600" height="600"></canvas>
     <div class="in-game hidden">
       <span id="score">score: 0</span>
-      <span id='in-game-options'>options</span>
+      <span id='in-game-options' action='menu options'>options</span>
     </div>
     <div class="disclaimer">*under devlopement not all features may be functional*</div>
   </body>
 
   <script src="/js/jquery.min.js"></script>
   <script src="js/mainloop.min.js"></script>
+  <script src='js/game.js'></script>
   <script src="js/TileMap.js"></script>
   <script src="js/Tile.js"></script>
 
   <script type="text/javascript">
-
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
-    var mouse = {x:'0', y:'0', active:false, pressed:false, released:false};
-
-    var score_data = document.getElementById('score');
-    var accuracy_data = document.getElementById('acc');
-    var speed_data = document.getElementById('speed');
-
-    const GAME_STATE = {
-      PLAYING : {name:'playing'},
-      PAUSED  : {name:'paused'},
-      MENU    : {name:'menu'},
-      FAIL    : {name:'fail'},
-      WIN     : {name:'win'}
-    };
-
-    var state = {
-      name: 'paused',
-      mapTime: 0,
-      laskClickTime: 0,
-      failTime: 0,
-      endTime: 0,
-      time: 0,
-      numberOfClicks: 0,
-      lastClickTime: 0
-    }
-
-    var mode = '';
 
     var map = new TileMap(60, 60, ['#fff','#36FBB3','#E8C547'], 4, 120, 3, 5);
 
@@ -148,46 +122,6 @@
 
     }
 
-
-    CanvasRenderingContext2D.prototype.tile = function(x, y, size, color) {
-      this.beginPath();
-      this.rect(x, y, size, size);
-      this.strokeStyle = 'black';
-      this.fillStyle = color;
-      this.lineWidth = 1;
-      this.stroke();
-      this.fill();
-    }
-
-    CanvasRenderingContext2D.prototype.dev = function () {
-      this.beginPath();
-      this.arc(mouse.x, mouse.y, 5, 0, Math.PI * 2, true);
-      this.fillStyle = 'black';
-      this.fill();
-    }
-
-    CanvasRenderingContext2D.prototype.timer = function (map) {
-      this.beginPath();
-      this.lineWidth = 6;
-      this.moveTo(map.x-4, map.y + map.size);
-      this.lineTo(map.x-4, map.y + map.size - map.size * (state.mapTime / map.time));
-      this.strokeStyle = map.color[1];
-      this.stroke();
-      this.closePath();
-    }
-
-    canvas.onmousedown = function(event) {
-      var rect = canvas.getBoundingClientRect();
-      mouse.x = event.clientX - rect.left;
-      mouse.y = event.clientY - rect.top;
-      if(!mouse.active) mouse.pressed = true;
-      mouse.active = true;
-    }
-    canvas.onmouseup = function() {
-      if(mouse.active) mouse.released = true;
-      mouse.active = false;
-    }
-
     $(function() {
       $('.day-night').click(function() {
         $('body').toggleClass('day');
@@ -195,21 +129,30 @@
       });
 
       $('#in-game-options').click(function() {
-        console.log('in-game');
         $('#options').removeClass('hidden').addClass('active');
       });
 
       $('#main').toggleClass('active');
       $('.button').click(function() {
         $('.active').removeClass('active');
-        var menu = $(this).attr('goto');
-        if(menu != null) {
-          if (menu.startsWith('game')) {
-            mode = menu.split(' ')[1];
+        var action = $(this).attr('action').split(' ');
+        //console.log(action);
+        switch (action[0]) {
+          case 'menu':
+            $("#"+action[1]).addClass('active');
+            break;
+          case 'vol':
+            //TODO volume controls
+            break;
+          case 'game':
             $('.menu').toggleClass('hidden');
             $('.in-game').toggleClass('hidden');
-            setTimeout(function(){MainLoop.setUpdate(update).setDraw(render).start();}, 0);
-          } else $("#"+menu).addClass('active');
+            setTimeout(function() {
+              MainLoop.setUpdate(update).setDraw(render).start();
+            }, 0);
+            break;
+          default:
+
         }
       });
     });

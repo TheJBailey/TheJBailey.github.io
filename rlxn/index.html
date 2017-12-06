@@ -26,13 +26,11 @@
       }
 
       .video-wrapper {
-        width: 100vw;
-        height: 100vh;
         position: absolute;
       }
 
       .video-wrapper > video {
-        position: absolute;
+        position: fixed;
         min-width: 100%;
         min-height: 100%;
         width: auto;
@@ -80,19 +78,26 @@
        bottom: 3px;
       }
 
-      #kuro {
+      .bottom {
         position: absolute;
         bottom: 10px;
-        right: 15px;
       }
 
-      #kuro a {
+      .bottom a {
         text-decoration: underline;
         transition: .2s;
       }
 
-      #kuro a:hover {
+      .bottom a:hover {
         text-shadow: 0 0 2px white;
+      }
+
+      .left {
+        left: 15px;
+      }
+
+      .right {
+        right: 15px;
       }
 
     </style>
@@ -116,11 +121,19 @@
       <a href="https://twitter.com/heyrlxn"><span>twitter</span></a>
     </div>
 
-    <span id="kuro"> //<a href="https://www.youtube.com/watch?v=hCzx14MLa8M&ab_channel=Kurosai">Kurosai</a>// </span>
-    
+    <span class='bottom right' id="kuro"> //<a href="https://www.youtube.com/watch?v=hCzx14MLa8M&ab_channel=Kurosai">Kurosai</a>// </span>
+    <span class='bottom left' id="mute"> //<a>mute</a>// </span>
+
     <script type="text/javascript">
       var video = document.getElementById('video');
       video.volume = .08;
+
+      var mute = document.getElementById('mute');
+
+      mute.addEventListener('click', function() {
+        video.muted = !video.muted;
+      });
+
     </script>
   </body>
 </html>
