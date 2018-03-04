@@ -37,7 +37,7 @@
 			}).data('gridster');
 
 			$(window).resize(function() {
-				
+
 			});
 
 			var dir = 'assets/imgs/';
@@ -48,15 +48,15 @@
 				url: dir,
 				success: function (data) {
 					$(data).find("a").filter(function () {return regexp.test($(this).text()) || regexpVid.test($(this).text());}).each(function () {
-						var filename = this.href.replace(window.location.host, "").replace("http://", "").replace("/gridster-test/", "");
+						var filename = this.href.replace(window.location.host, "").replace("http://", "").replace("/gridster-test/", "/gridster-test/"+dir);
 						var widget;
-						if(regexpVid.test(filename)) 
+						if(regexpVid.test(filename))
 							widget = ["<li><video loop><source src='" + filename + "'></video></li>", 1, 1];
 						else
 							widget = ["<li><img src='" + filename + "'></li>", 1, 1];
 
 						gridster.add_widget(widget[0], widget[1], widget[2]).click(function() {
-							
+
 							var content_width, content_height;
 							var $content = $($(this).children()[0]);
 							var $active = $('.active');
@@ -89,7 +89,7 @@
 								var ratio = getClosestRatio(content_width, content_height);
 								var $widget = gridster.resize_widget($(this).addClass('active'), ratio[0], ratio[1]);
 								var scroll_distance = columns - ($widget.offset().left / size) - ratio[0];
-								
+
 								var index = $('li').index($(this));
 								var scroll = (Math.floor((index / columns)) - .5) * size;
 
@@ -99,15 +99,15 @@
 									scrollLeft: scroll_distance,
 									scrollTop: scroll
 								}, 250, 'linear');
-								
+
 							}
-							/* 
+							/*
 							// old resize method
 							var resize = Math.ceil($(this).height() / size) == 1 ? 3 : 1;
 							gridster.resize_widget($(this), resize, resize, true);
 							*/
 						});
-						
+
 					});
 				}
 			});

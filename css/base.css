@@ -283,6 +283,10 @@ content > .section {
 	font-size: .7em;
 }
 
+#section-2 > .projects > a {
+	z-index: 1;
+}
+
 #section-2 > .projects .item {
 	background: #000;
 	margin: 10px 0;
