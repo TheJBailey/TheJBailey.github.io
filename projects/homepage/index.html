@@ -1,54 +1,90 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>homepage</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" href="../../css/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="../../js/jquery.min.js">
+
+	</script>
 </head>
+
 <body>
 	<section>
-		
-		<div id="content-left">
-			<div id=stuff>
-				<div id="title">
-					<h1>hiya!</h1>
+
+		<div class='title'>yo!</div>
+
+		<div class='content'>
+			<div class='groups-wrapper'>
+				<div class='group-icons-wrapper'>
+					<ul>
+						<li class='icon reddit'><i class="fa fa-reddit-alien" aria-hidden="true"></i></li>
+						<li class='icon steam'><i class="fa fa-steam" aria-hidden="true"></i></li>
+						<li class='icon chan'><i class="fa fa-life-ring" aria-hidden="true"></i></li>
+						<li class='icon google'><i class="fa fa-google" aria-hidden="true"></i></li>
+						<li class='icon film'><i class="fa fa-film" aria-hidden="true"></i></li>
+						<li class='icon dev'><i class="fa fa-terminal" aria-hidden="true"></i></li>
+					</ul>
 				</div>
-				<div id="links">
-					<ul>
-						<li><a href="https://www.4chan.org/g/">/g/</a></li>
-						<li><a href="https://www.4chan.org/fa/">/fa/</a></li>
-						<li><a href="https://www.4chan.org/wg/">/wg/</a></li>
-						<li><a href="https://www.4chan.org/wsg/">/wsg/</a></li>
-						<li><a href="https://www.reddit.com/r/PUBATTLEGROUNDS/">/r/pubg</a></li>
-						<li><a href="https://www.reddit.com/r/GlobalOffensive/">/r/csgo</a></li>
+
+				<div class='links-wrapper'>
+					<ul class="links" id="reddit">
+						<div><li class='link'><a href="https://www.reddit.com/r/GlobalOffensive/">csgo</a></li></div>
+						<div><li class='link'><a href="https://www.reddit.com/r/PUBATTLEGROUNDS/">pubg</a></li></div>
+						<div><li class='link'><a href="https://www.reddit.com/r/hearthstone/">hearthstone</a></li></div>
+						<div><li class='link'><a href="https://www.reddit.com/r/fortnitebr/">fortnite</a></li></div>
+						<div><li class='link'><a href="https://www.reddit.com/r/battlerite/">battlerite</a></li></div>
 					</ul>
-					<ul>
-						<li><a href="https://mail.google.com/mail/u/0/">gmail</a></li>
-						<li><a href="https://www.youtube.com/">youtube</a></li>
-						<li><a href="https://www.amazon.com/">amazon</a></li>
-						<li><a href="https://drive.google.com/drive/my-drive">drive</a></li>
-						<li><a href="https://app.plex.tv/web/app#">plex</a></li>
-						<li><a href="https://thepiratebay.org/">the bay</a></li>
+					<ul class="links" id="steam">
+						<div><li class='link'><a href="https://www.steamcommunity.com/id/victoryhand">/id/victoryhand</a></li></div>
+						<div><li class='link'><a href="https://www.steamcommunity.com/id/puresweaty">/id/puresweaty</a></li></div>
+						<div><li class='link'><a href="https://www.steamcommunity.com/id/lovelytrap">/id/lovelytrap</a></li></div>
+						<div><li class='link'><a href="https://www.steamcommunity.com/market/">market</a></li></div>
 					</ul>
-					<ul>
-						<li><a href="https://hangouts.google.com/">hangouts</a></li>
-						<li><a href="https://sketch.io/sketchpad/">sketchpad</a></li>
-						<li><a href="https://www.netflix.com/browse">netflix</a></li>
-						<li><a href="https://www.twitch.tv/directory">twitch</a></li>
-						<li><a href="http://www.wolframalpha.com/">wolfram</a></li>
-						<li><a href="https://www.desmos.com/calculator">desmos</a></li>
+					<ul class="links" id="chan">
+						<div><li class='link'><a href="https://www.4chan.org/g/">g</a></li></div>
+						<div><li class='link'><a href="https://www.4chan.org/wg/">wg</a></li></div>
+						<div><li class='link'><a href="https://www.4chan.org/fa/">fa</a></li></div>
+						<div><li class='link'><a href="https://www.4chan.org/wsg/">wsg</a></li></div>
+					</ul>
+					<ul class="links" id="google">
+						<div><li class='link'><a href="https://mail.google.com/mail/u/0/">gmail</a></li></div>
+						<div><li class='link'><a href="https://drive.google.com/drive/my-drive">drive</a></li></div>
+						<div><li class='link'><a href="https://hangouts.google.com/">hangouts</a></li></div>
+						<div><li class='link'><a href="https://www.youtube.com/">youtube</a></li></div>
+					</ul>
+					<ul class="links" id="film">
+						<div><li class='link'><a href="https://www.netflix.com/browse">netflix</a></li></div>
+						<div><li class='link'><a href="https://www.twitch.tv/directory">twitch</a></li></div>
+						<div><li class='link'><a href="https://solarmoviez.ru/">solarmovie</a></li></div>
+						<div><li class='link'><a href="https://putlocker.sk">putlocker</a></li></div>
+						<div><li class='link'><a href="https://thepiratebay.org/">the bay</a></li></div>
+					</ul>
+					<ul class="links" id="dev">
+						<div><li class='link'><a href="https://github.com/">github</a></li></div>
+						<div><li class='link'><a href="https://sketch.io/sketchpad/">sketchpad</a></li></div>
+						<div><li class='link'><a href="https://github.com/">wolfram</a></li></div>
+						<div><li class='link'><a href="https://github.com/">desmos</a></li></div>
 					</ul>
 				</div>
 			</div>
 
-			<div id="searchbar">
-				<form method="get" action="https://www.google.com/search"><input type="text" autocomplete="off" name="q" autofocus></form>
+			<div class='accent-wrapper'><img class='accent' src="assets/accent-img2.jpg"></div>
+		</div>
+
+		<div class='search-wrapper'>
+			<div>
+				<!--<form method="get" action="https://www.google.com/search"><input type="text" autocomplete="off" name="q" autofocus></form>-->
 			</div>
 		</div>
 
-		<div id="content-right"></div>
-
+		<div class='footer'></div>
 	</section>
-	<footer></footer>
+
+
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
+
 </html>

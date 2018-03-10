@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #ddd;
+  font-family: 'Montserrat', sans-serif; }
+
+a {
+  text-decoration: none; }
+
+ul {
+  display: inline-block; }
+
+li {
+  list-style: none; }
+
+/* GOLBAL VARIABLES */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: #333; }
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 252px;
+  padding: 10px 0; }
+
+.groups-wrapper {
+  width: 300px;
+  height: 252px;
+  background: #222;
+  margin: 0 10px 0 0;
+  border: #222 solid 2px;
+  display: flex;
+  justify-content: space-between; }
+
+.group-icons-wrapper {
+  height: 100%;
+  margin: 0 0; }
+  .group-icons-wrapper > ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column; }
+    .group-icons-wrapper > ul > li {
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      margin: 1px 0;
+      transition: all .2s ease-in-out; }
+      .group-icons-wrapper > ul > li > i {
+        position: absolute;
+        transition: all .2s ease-in-out; }
+
+.reddit:hover, .active.reddit {
+  background: #ff4500; }
+  .reddit:hover i, .active.reddit i {
+    color: #fff; }
+
+.steam:hover, .active.steam {
+  background: #133B6F; }
+  .steam:hover i, .active.steam i {
+    color: #fff; }
+
+.chan:hover, .active.chan {
+  background: #8AC545; }
+  .chan:hover i, .active.chan i {
+    color: #0D9549; }
+
+.google:hover, .active.google {
+  background: #4285f4; }
+  .google:hover i, .active.google i {
+    color: #fff; }
+
+.film:hover, .active.film {
+  background: #d6182a; }
+  .film:hover i, .active.film i {
+    color: #000; }
+
+.dev:hover, .active.dev {
+  background: #6a737b; }
+  .dev:hover i, .active.dev i {
+    color: #fd0; }
+
+.links-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-x: hidden; }
+  .links-wrapper::-webkit-scrollbar {
+    width: 0px; }
+
+.links {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  .links > div {
+    position: relative;
+    height: 40px;
+    margin: 1px 1px 1px 2px; }
+    .links > div > li {
+      z-index: 100;
+      position: absolute;
+      left: 270px;
+      transition: left 200ms ease-in-out;
+      background: #111;
+      width: 100%;
+      height: 40px; }
+      .links > div > li > a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+        padding: 0 0 0 10px;
+        transition: all 200ms ease-in-out; }
+        .links > div > li > a:hover {
+          background: #333; }
+
+.active > li {
+  left: 0 !important; }
+
+.accent-wrapper {
+  width: 252px;
+  height: 252px;
+  border: solid 2px; }
+
+.accent-wrapper img {
+  width: inherit;
+  height: inherit; }
+
+.accent {
+  object-fit: cover;
+  object-position: center; }
+
+/*# sourceMappingURL=main.css.map */
