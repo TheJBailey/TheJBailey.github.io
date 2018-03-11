@@ -5,17 +5,18 @@ $(function() {
   var $icons = $('.icon')
 
 
-  groups.forEach(function(element, index) {
+  groups.forEach(function(element, group_index) {
     var $icon = $('.'+element)
     var $linkgroup = $('#'+element)
 
-    if(index == 0) {
+    if(group_index == 0) {
       $icon.toggleClass('active')
       $linkgroup.children().toggleClass("active")
     }
 
     $linkgroup.children('div').each(function(index, child) {
-      $(child).children().css('transition-delay', ((40*index))+'ms')
+      var delay = (50*Math.abs(group_index-index));
+      $(child).children().css('transition-delay', (delay)+'ms')
     })
     $icon.mouseenter(function() {
       $icons.removeClass('active')
