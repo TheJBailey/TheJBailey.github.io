@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/hover.css">
+    <script src="../../js/jquery.min.js"></script>
     <style>
       .noselect {
         -webkit-touch-callout: none; /* iOS Safari */
@@ -23,138 +24,33 @@
     </style>
   </head>
   <body class='day noselect'>
-    <div id='main' class='menu'>
-      <div class="title">square click</div>
-      <div action='menu play' class="button hvr-bob">play</div>
-      <div action='menu options' class="button hvr-bob">options</div>
-    </div>
-    <div id='play' class='menu'>
-      <div class="title">square click</div>
-      <div action='menu modes' class="button hvr-bob">singleplayer</div>
-      <div action='menu multi' class="button hvr-bob">multiplayer</div>
-      <div action='menu main' class="button hvr-bob">back</div>
-    </div>
-    <div id='modes' class='menu'>
-      <div class="title">square click</div>
-      <div action='game race' class="button hvr-bob">race</div>
-      <div action='game endless' class="button hvr-bob">endless race</div>
-      <div action='game chill' class="button hvr-bob">chill</div>
-      <div action='menu play' class="button hvr-bob">back</div>
-    </div>
-    <div id='multi' class='menu'>
-      <div class="title">square click</div>
-      <div action='menu host' class="button hvr-bob">host</div>
-      <div action='menu join' class="button hvr-bob">join</div>
-      <div action='menu play' class="button hvr-bob">back</div>
-    </div>
-    <div id='host' class='menu'>
-      <div class="title">square click</div>
-      <div class="button"><span></span></div>
-      <div action='menu multi' class="button hvr-bob">back</div>
-    </div>
-    <div id='join' class='menu'>
-      <div class="title">square click</div>
-      <input class="input" type="text" name="" value="" placeholder="enter code">
-      <div action='game join' class="button hvr-bob">join</div>
-      <div action='menu multi' class="button hvr-bob">back</div>
-    </div>
-    <div id='options' class='menu'>
-      <div class="title">options</div>
-      <label class="switch">
-        <input class='day-night' type="checkbox">
-        <span class="slider"></span>
-      </label>
-      <div class="label">volume</div>
-      <span class="volume">
-        <div action='vol down' class="button"><</div>
-        <div action='vol up' class="button">></div>
-      </span>
-      <div action='menu main' class="button hvr-bob">back</div>
-    </div>
     <canvas id="canvas" width="600" height="600"></canvas>
-    <div class="in-game hidden">
-      <span id="score">score: 0</span>
-      <span id='in-game-options' action='menu options'>options</span>
-    </div>
     <div class="disclaimer">*under devlopement not all features may be functional*</div>
+    <div id="help-btn"><span>?</span></div>
+    <div id='help-menu'>
+      <div class="right">
+        <span>ALT+B</span>
+        <span>ALT+L</span>
+        <span>ALT+M</span>
+      </div>
+      <div class="left">
+        <span>show binds</span>
+        <span>change look</span>
+        <span>change mode</span>
+      </div>
+    </div>
   </body>
 
-  <script src="/js/jquery.min.js"></script>
   <script src="js/mainloop.min.js"></script>
-  <script src='js/game.js'></script>
+  <script src="../../js/keyboard.min.js"></script>
   <script src="js/TileMap.js"></script>
   <script src="js/Tile.js"></script>
+  <script src="js/keys.js"></script>
+  <script src="js/menus.js"></script>
+  <script src='js/game.js'></script>
 
   <script type="text/javascript">
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
-
-    var map = new TileMap(60, 60, ['#fff','#36FBB3','#E8C547'], 4, 120, 3, 5);
-
-    function update(delta) {
-      //console.log(state);
-      state.time = new Date().getTime();
-      switch (state.name) {
-        case 'time_limit':
-        case 'fail':
-        case 'paused':
-        case 'win':
-        case 'playing':
-          map.update(delta);
-          break;
-        case 'menu':
-          break;
-        default:
-      }
-      mouse.pressed = mouse.released = false;
-    }
-
-    function render(interpPerc) {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      map.render(interpPerc);
-    }
-
-    function begin() {
-
-    }
-
-    function end() {
-
-    }
-
-    $(function() {
-      $('.day-night').click(function() {
-        $('body').toggleClass('day');
-        $('body').toggleClass('night');
-      });
-
-      $('#in-game-options').click(function() {
-        $('#options').removeClass('hidden').addClass('active');
-      });
-
-      $('#main').toggleClass('active');
-      $('.button').click(function() {
-        $('.active').removeClass('active');
-        var action = $(this).attr('action').split(' ');
-        //console.log(action);
-        switch (action[0]) {
-          case 'menu':
-            $("#"+action[1]).addClass('active');
-            break;
-          case 'vol':
-            //TODO volume controls
-            break;
-          case 'game':
-            $('.menu').toggleClass('hidden');
-            $('.in-game').toggleClass('hidden');
-            setTimeout(function() {
-              MainLoop.setUpdate(update).setDraw(render).start();
-            }, 0);
-            break;
-          default:
-
-        }
-      });
-    });
+    MainLoop.setBegin(begin).setUpdate(update).setDraw(render).setEnd(end).start();
   </script>
+
 </html>

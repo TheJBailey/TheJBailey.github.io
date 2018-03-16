@@ -1,172 +1,152 @@
-function TileMap(x, y, color, mapSize, tileSize, activeLimit, time) {
-  this.x = x;
-  this.y = y;
-  this.color = color;
+const MAP_STATE = {
+  FAIL: 1,
+  TIME_LIMIT: 2,
+  PLAY: 3,
+  PAUSE: 4,
+  START: 5,
+  BIND: 6
+}
+
+function TileMap(x, y, mapSize, tileSize, activeLimit, time, mode, colors) {
+  this.x = (canvas.width - (tileSize*mapSize)) / 2;
+  this.y = 150;
+  this.colors = colors;
   this.mapSize = mapSize;
   this.tileSize = tileSize;
-  this.size = tileSize * mapSize;
   this.activeLimit = activeLimit;
-  this.time = time*1000;
-
+  this.time = time * 1000;
+  this.timer = time;
+  this.mode = mode;
+  this.color = colors;
+  this.score = 0;
+  this.fail = {tile:-1, time:0.0};//TODO rename
+  this.k = {x : -1, y: -1};
+  this.binds = false;
   this.reset();
 }
 
-TileMap.prototype.initTiles = function () {
-  this.tiles = [];
-  for (var ys = 0; ys < this.mapSize; ys++) {
-    for (var xs = 0; xs < this.mapSize; xs++) {
-      this.tiles.push(new Tile(xs, ys, this));
-    }
+//-------------------------------UPDATE---------------------------------
+TileMap.prototype.update = function(delta) {
+  var inBounds = (mouse.x >= this.x && mouse.x <= this.x + this.size()) &&
+              (mouse.y >= this.y && mouse.y <= this.y + this.size());
+
+  var mx = -1;
+  var my = -1;
+  if(mouse.pressed & inBounds) {
+    mx = Math.floor((mouse.x - this.x) / this.tileSize);
+    my = Math.floor((mouse.y - this.y) / this.tileSize);
   }
-  state.mapTime = this.time;
-}
+  var tx = (this.k.x == -1 ? mx : this.k.x);
+  var ty = (this.k.y == -1 ? my : this.k.y);
 
-//----------------------------------------------------------UPDATE----------------------------------------------------------------------
-TileMap.prototype.update = function (delta) {
-  var check = (mouse.x >= this.x && mouse.x <= this.x + this.size) &&
-              (mouse.y >= this.y && mouse.y <= this.y + this.size);
+  var tileIndex = tx + ty * this.mapSize;
 
-  var mx = Math.floor((mouse.x-this.x) / this.tileSize);
-  var my = Math.floor((mouse.y-this.y) / this.tileSize);
-
-  var tileIndex = mx + my * this.mapSize;
-
-  switch (state.name) {
-    case 'playing':
-      switch (mode) {
-        case 'endless':
-          state.mapTime -= delta;
-          if(mouse.pressed && check) {
-            if(tileIndex < this.tiles.length)  {
-              if (this.tileCheck(tileIndex) == 0) this.fail(tileIndex);
-              else {
-                this.activateTiles(1);
-                this.tiles[tileIndex].state = 0;
-                score_data.innerHTML = 'score: ' + ++state.numberOfClicks;
-                var timeSinceClick = (state.time - state.lastClickTime) / 1000; //secs ;)
-                //speed.innerHTML = Math.round(1 / timeSinceClick * 100) / 100 + ' cps';
-                state.lastClickTime = state.time;
-                if(state.numberOfClicks % 15 == 0) state.mapTime = this.time;
-              }
-            }
-          }
-          if(state.mapTime < 0) this.timeLimitReached();
-          break;
-        case 'race':
-          state.mapTime -= delta;
-          if(mouse.pressed && check) {
-            if(tileIndex < this.tiles.length)  {
-              if (this.tileCheck(tileIndex) == 0) this.fail(tileIndex);
-              else {
-                this.activateTiles(1);
-                this.tiles[tileIndex].state = 0;
-                score_data.innerHTML = 'score: ' + ++state.numberOfClicks;
-                var timeSinceClick = (state.time - state.lastClickTime) / 1000; //secs ;)
-                //speed.innerHTML = Math.round(1 / timeSinceClick * 100) / 100 + ' cps';
-              }
-            }
-          }
-          if(state.mapTime < 0) this.timeLimitReached();
-          break;
-        case 'chill':
-          if(mouse.pressed && check) {
-            if(tileIndex < this.tiles.length)  {
-              if (this.tileCheck(tileIndex) == 0) this.fail(tileIndex);
-              else {
-                this.activateTiles(1);
-                this.tiles[tileIndex].state = 0;
-                score_data.innerHTML = 'score: ' + ++state.numberOfClicks;
-                var timeSinceClick = (state.time - state.lastClickTime) / 1000; //secs ;)
-                //speed.innerHTML = Math.round(1 / timeSinceClick * 100) / 100 + ' cps';
-                state.lastClickTime = state.time;
-              }
-            }
-          }
-          if(state.mapTime < 0) this.timeLimitReached();
-          break;
-        default:
-
-      }
-
-
-      break;
-    case 'paused':
-      if(mouse.pressed && check) {
-        if(tileIndex < this.tiles.length) {
-          if(this.tileCheck(tileIndex) == 1) {
-            this.activateTiles(1);
-            this.tiles[tileIndex].state = 0;
-            this.play();
-          } else this.fail(tileIndex);
+  switch (this.state) {
+    case MAP_STATE.START:
+      if (tileIndex > -1 && tileIndex < this.tiles.length) {
+        if (this.tileCheck(tileIndex) == 0) this.failed(tileIndex);
+        else {
+          this.score++;
+          this.activateTiles(1);
+          this.tiles[tileIndex].state = 0;
+          this.play();
         }
       }
       break;
-    case 'time_limit':
-      state.endTime += delta;
+    case MAP_STATE.PLAY:
+      if(this.mode != MODE.CHILL) this.timer -= delta;
+      if (tileIndex > -1 && tileIndex < this.tiles.length) {
+        if (this.tileCheck(tileIndex) == 0) this.failed(tileIndex);
+        else {
+          switch (mode) {
+            case MODE.RACE:
 
-      var time = Math.floor(state.endTime / 100) * 1;
-      if(time < this.tiles.length) this.tiles[time].state = 1;
-      if(state.endTime > this.tiles.length*100) this.reset();
-
+              break;
+            case MODE.TIME_TRIAL:
+              this.score++;
+              this.activateTiles(1);
+              this.tiles[tileIndex].state = 0;
+              break;
+            case MODE.ENDLESS:
+              if(this.score % 15 == 0) this.timer = this.time;
+              this.score++;
+              this.activateTiles(1);
+              this.tiles[tileIndex].state = 0;
+              break;
+            case MODE.CHILL:
+              this.score++;
+              this.activateTiles(1);
+              this.tiles[tileIndex].state = 0;
+              break;
+          }
+        }
+      }
+      if(this.timer <= 0) this.timeLimitReached();
       break;
-    case 'fail':
-      state.failTime += 1 * delta;
+    case MAP_STATE.PAUSE:
+      break;
+    case MAP_STATE.TIME_LIMIT:
+      this.fail.time += delta
+       var time = Math.floor(this.fail.time / 100) * 1;
+       if(time < this.tiles.length) this.tiles[time].state = 1;
+       if(this.fail.time > this.tiles.length*100) this.reset();
+      break;
+    case MAP_STATE.FAIL:
+      this.fail.time += 1 * delta;
+      var time = Math.floor(this.fail.time / 100) * 1;
+      if(time % 2 == 0) this.tiles[this.fail.tile].state = 0;
+      else this.tiles[this.fail.tile].state = 2;
 
-      var time = Math.floor(state.failTime / 100) * 1;
-      if(time % 2 == 0) this.tiles[state.tileIndex].state = 0;
-      else this.tiles[state.tileIndex].state = 2;
-
-      if(state.failTime > 1500) {
-        state.failTime = 0;
+      if(this.fail.time > 1500) {
+        this.fail.time = 0;
         this.reset();
       }
       break;
-    case 'menu':
+    case MAP_STATE.BIND:
 
       break;
     default:
   }
 
+  this.k.x = this.k.y = -1; //reset keyboard input
 }
 
-TileMap.prototype.render = function (interpPerc) {
-  switch (state.name) {
-    case 'playing':
-      this.tiles.forEach(function(tile) {
-        tile.render(interpPerc);
-      });
-      if(mode != 'chill') context.timer(this);
-      //context.dev();
-      break;
-    case 'paused':
-      this.tiles.forEach(function(tile) {
-        tile.render(interpPerc);
-      });
-      if(mode != 'chill') context.timer(this);
-      break;
-    case 'time_limit':
-      this.tiles.forEach(function(tile) {
-        tile.render(interpPerc);
-      });
-      break;
-    case 'fail':
-      this.tiles.forEach(function(tile) {
-        tile.render(interpPerc);
-      });
-      if(mode != 'chill') context.timer(this);
-      break;
-    case 'menu':
-
+TileMap.prototype.render = function(interpPerc) {
+  if(this.state == MAP_STATE.START) {
+    context.text(null, this.size()+this.y+25, 'click to start', 16, 'Montserrat', this.color[1]);
+  }
+  switch (mode) {
+    case MODE.ENDLESS:
+    case MODE.RACE:
+    case MODE.CHILL:
+    case MODE.TIME_TRIAL:
+      this.tiles.forEach(function(tile) { tile.render(interpPerc); })
+      context.timer(this);
       break;
     default:
   }
+  context.text(this.x, this.y+this.size()+25, modeName(), 16, 'Montserrat',this.color[1]);
+  context.font = "16px Montserrat";
+  context.fillStyle = this.color[1];
+  var rx = this.size()+this.x-context.measureText('score: '+ this.score).width;
+  context.fillText('score: '+ this.score, rx, this.size()+this.y+25);
 }
 
-TileMap.prototype.activateTiles = function (numberOfTiles) {
+TileMap.prototype.initTiles = function() {
+  this.tiles = [];
+  for (var ys = 0; ys < this.mapSize; ys++) {
+    for (var xs = 0; xs < this.mapSize; xs++) {
+      this.tiles.push(new Tile(xs, ys, this, def_binds[ys][xs]));
+    }
+  }
+  this.timer = this.time;
+}
+
+TileMap.prototype.activateTiles = function(numberOfTiles) {
   while (numberOfTiles > 0) {
     var x = Math.floor(Math.random() * this.mapSize);
     var y = Math.floor(Math.random() * this.mapSize);
-    if(this.tiles[x + y * this.mapSize].state == 1) continue;
+    if (this.tiles[x + y * this.mapSize].state == 1) continue;
     else {
       this.tiles[x + y * this.mapSize].state = 1;
       numberOfTiles--;
@@ -174,31 +154,65 @@ TileMap.prototype.activateTiles = function (numberOfTiles) {
   }
 }
 
-TileMap.prototype.tileCheck = function (tileIndex) {
-  return this.tiles[tileIndex].state;
-}
-
-TileMap.prototype.reset = function () {
+TileMap.prototype.reset = function() {
   this.initTiles();
   this.activateTiles(this.activeLimit);
-  state.mapTime = this.time;
-  state.endTime = 0;
-  state.name = 'paused';
+  this.timer = this.time;
+  this.fail.tile = -1;
+  this.fail.time = 0;
+  this.score = 0;
+  this.state = MAP_STATE.START;
+  if(dev) console.log("reset");
 }
 
-TileMap.prototype.play = function () {
-  state.numberOfClicks = 0;
-  //score.innerHTML = 0;
-  state.laskClickTime = state.time;
-  state.name = 'playing';
+TileMap.prototype.play = function() {
+  this.state = MAP_STATE.PLAY;
+  if(dev) console.log('play');
+}
+
+TileMap.prototype.failed = function(tile) {
+  this.state = MAP_STATE.FAIL;
+  this.fail.tile = tile;
+  this.fail.time = 0;
+  if(dev) console.log('fail');
+}
+
+TileMap.prototype.timeLimitReached = function() {
+  this.state = MAP_STATE.TIME_LIMIT;
+  this.fail.time = 0;
+  if(dev) console.log('time limit');
+}
+
+TileMap.prototype.size = function () {
+  return this.mapSize * this.tileSize;
 };
 
-TileMap.prototype.fail = function (tileIndex) {
-  state.tileIndex = tileIndex;
-  state.name = 'fail';
+
+TileMap.prototype.clickTile = function(tx, ty) {
+  this.k.x = tx;
+  this.k.y = ty;
 }
 
-TileMap.prototype.timeLimitReached = function () {
-  //speed.innerHTML = 'avg ' + Math.round(state.numberOfClicks/(this.time/1000)*100)/100 + ' cps';
-  state.name = 'time_limit';
+TileMap.prototype.tileCheck = function(index) {
+  return this.tiles[index].state;
+}
+
+TileMap.prototype.nextMode = function() {
+  this.reset();
+  if(mode < 2) mode++;
+  else mode = 0;
+}
+
+function modeName() {
+  switch (this.mode) {
+    case MODE.RACE:
+      return 'race'
+    case MODE.ENDLESS:
+      return 'endless'
+    case MODE.CHILL:
+      return 'chill'
+    case MODE.TIME_TRIAL:
+      return 'time trial'
+    default:
+  }
 }
