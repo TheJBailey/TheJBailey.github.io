@@ -199,12 +199,12 @@ TileMap.prototype.tileCheck = function(index) {
 
 TileMap.prototype.nextMode = function() {
   this.reset();
-  if(mode < 2) mode++;
-  else mode = 0;
+  if(this.mode < 2) this.mode++;
+  else this.mode = 0;
 }
 
 function modeName() {
-  switch (this.mode) {
+  switch (map.mode) {
     case MODE.RACE:
       return 'race'
     case MODE.ENDLESS:
