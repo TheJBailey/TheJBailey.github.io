@@ -28,7 +28,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 1.1em;
+    width: .2em;
 }
 
 body::-webkit-scrollbar-track {
@@ -275,7 +275,7 @@ content > .section {
 
 #section-2 > .projects {
 	width: 70%;
-	height: 100%;
+	height: 60%;
 	display: flex;
 	flex-direction: column;
 	justify-content:center;
@@ -292,6 +292,11 @@ content > .section {
 	margin: 10px 0;
 	padding: 8px 13px;
 	cursor: pointer;
+}
+
+#prj {
+ width: 100vw;
+ height: 100vh;
 }
 
 #uc {

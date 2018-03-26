@@ -47,14 +47,16 @@
 
       <div class="noselect section" id='section-2'>
         <div class="projects">
-          <a href="/projects/squareclick/index.html"><div class="item">Square Click</div></a>
-          <a href="https://winterbeam.github.io/"><div class="item">Winterbeam</div></a>
+          <div class="item" link="projects/squareclick/index.html">Square Click</div></a>
+          <div class="item" link="https://winterbeam.github.io/">Winterbeam</div></a>
           <div class="item" style="text-decoration: line-through">WYD?</div>
           <div class="item" style="text-decoration: line-through">lifeless</div>
         </div>
       </div>
 
+      <div id='section-3'></div>
     </content>
+
 
     <footer></footer>
   </div>
@@ -74,49 +76,59 @@
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/slidebars.min.js"></script>
 <script>
-  (function ($) {
-    var controller = new slidebars();
-    controller.init();
+(function ($) {
+  var controller = new slidebars();
+  controller.init();
 
-    var burger = $('#nav_button');
-    function nav_interact(event) {
-      // Stop default action and bubbling
-      event.stopPropagation();
-      event.preventDefault();
+  var burger = $('#nav_button');
+  function nav_interact(event) {
+    // Stop default action and bubbling
+    event.stopPropagation();
 
-      if(event.data.action == 'toggle') {
-        burger.toggleClass('is-active');
-        controller.toggle('id-1');
-        return;
-      }
-
-      if(event.data.action == 'show') {
-        burger.addClass('is-active');
-        controller.open('id-1');
-        return;
-      }
-
-      if(event.data.action == 'hide') {
-        burger.removeClass('is-active');
-        controller.close('id-1');
-        return;
-      }
+    if(event.data.action == 'toggle') {
+      burger.toggleClass('is-active');
+      controller.toggle('id-1');
+      return;
     }
 
-    $('.nav_toggle').on('click', {action: 'toggle'}, nav_interact);
-    $('.nav_show').on('click', {action: 'show'}, nav_interact);
-    $('.nav_hide').on('click', {action: 'hide'}, nav_interact);
+    if(event.data.action == 'show') {
+      burger.addClass('is-active');
+      controller.open('id-1');
+      return;
+    }
 
-    var container = $('html, body'),
-        section1  = $('#section-1'),
-        section2  = $("#section-2");
+    if(event.data.action == 'hide') {
+      burger.removeClass('is-active');
+      controller.close('id-1');
+      return;
+    }
+  }
 
-    $('#d-pointer').on('click', function() {
-      container.animate({
-        scrollTop: section2.offset().top + Math.abs(section1.offset().top)
-      }, 1500, "easeInOutQuart");
-    });
-  })(jQuery);
+  $('.nav_toggle').on('click', {action: 'toggle'}, nav_interact);
+  $('.nav_show').on('click', {action: 'show'}, nav_interact);
+  $('.nav_hide').on('click', {action: 'hide'}, nav_interact);
+
+  var container = $('html, body'),
+      section1  = $('#section-1'),
+      section2  = $('#section-2'),
+      section3  = $('#section-3');
+
+  $('#d-pointer').on('click', function() {
+    container.animate({
+      scrollTop: section2.offset().top + Math.abs(section1.offset().top)
+    }, 1500, "easeInOutQuart");
+  });
+
+  $('.item').on('click', function() {
+    section3.html('<object id="prj" data="'+this.getAttribute('link')+'"/>')
+    container.animate({
+      scrollTop: section3.offset().top + Math.abs(section2.offset().top) + Math.abs(section1.offset().top)
+    }, 1500, "easeInOutQuart")
+  })
+
+
+})(jQuery);
+
 </script>
 
 
