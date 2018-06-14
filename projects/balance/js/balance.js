@@ -1,3 +1,6 @@
+// TODO fairly certain there's a memory leak somewhere
+
+
 (function() {
   console.log('v0.0.1');
   // graphics variable
@@ -14,7 +17,7 @@
 
   // balance.js objects
   var square1, square2;
-  var bounds = { size: 20 }
+  var bounds = { size: 30 }
 
   // @run() [psuedo]
   function run() {
@@ -28,12 +31,12 @@
     engine = Engine.create();
     world = engine.world;
 
-    square1 = Bodies.rectangle(100,100,40,40, {label:"square"});
-    square2 = Bodies.rectangle(200,100,40,40, {label:"square"});
-    World.add(world, [square1, square2]);
+    circle1 = Bodies.circle(100,100,50,{label:"circle"});
+    circle2 = Bodies.circle(200,100,50,{label:"circle"});
+    World.add(world, [circle1, circle2]);
 
-    bounds.top    = Bodies.rectangle(width / 2, bounds.size / 2, width-(bounds.size*2), bounds.size, {isStatic: true, label:"bounds"});
-    bounds.bottom = Bodies.rectangle(width / 2, height - (bounds.size / 2), width-(bounds.size*2), bounds.size, {isStatic: true, label:"bounds"});
+    bounds.top    = Bodies.rectangle(width / 2, bounds.size / 2, width, bounds.size, {isStatic: true, label:"bounds"});
+    bounds.bottom = Bodies.rectangle(width / 2, height - (bounds.size / 2), width, bounds.size, {isStatic: true, label:"bounds"});
     bounds.right  = Bodies.rectangle(width - (bounds.size / 2), height / 2, bounds.size, height-(bounds.size*2), {isStatic: true, label:"bounds"});
     bounds.left   = Bodies.rectangle(bounds.size  / 2, height / 2, bounds.size, height-(bounds.size*2), {isStatic: true, label:"bounds"});
 
@@ -43,7 +46,7 @@
         mouseConstraint = Matter.MouseConstraint.create(engine, {
            mouse: mouse,
            constraint: {
-               stiffness: 0.2,
+               stiffness: 1,
                render: {
                    visible: false
                }
@@ -64,7 +67,6 @@
   function update(delta) {
     // matter.js engine update
     Engine.update(engine, delta);
-
   }
 
   /**
@@ -87,23 +89,21 @@
     var bodies = Matter.Composite.allBodies(engine.world);
 
     for (var i = 0; i < bodies.length; i += 1) {
-      if(bodies[i].label == "bounds") ctx.fillStyle="white";
-      else if(bodies[i].label == "square") ctx.fillStyle="#47efac";
+      if(bodies[i].label == "bounds") ctx.fillStyle="#222";
+      else if(bodies[i].label == "circle") ctx.fillStyle="#47efac";
 
       var vertices = bodies[i].vertices;
 
       ctx.beginPath();
-      ctx.moveTo(vertices[0].x, vertices[0].y);
+      ctx.moveTo(Math.ceil(vertices[0].x), Math.ceil(vertices[0].y));
 
       for (var j = 1; j < vertices.length; j += 1) {
-        ctx.lineTo(vertices[j].x, vertices[j].y);
+        ctx.lineTo(Math.ceil(vertices[j].x), Math.ceil(vertices[j].y));
       }
 
-      ctx.lineTo(vertices[0].x, vertices[0].y);
+      ctx.lineTo(Math.ceil(vertices[0].x), Math.ceil(vertices[0].y));
       //console.log(ctx.fillStyle, bodies[i].label);
-      ctx.strokeStyle='#666';
-      if(bodies[i].label == "bounds") ctx.stroke();
-      else ctx.fill();
+      ctx.fill();
     }
 
     requestAnimationFrame(render);
