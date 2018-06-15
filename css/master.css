@@ -3,7 +3,10 @@
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
 	color: #000;
+	font-size: 16px;
+	font-weight: 300;
 	cursor: default;
+	z-index: inherit;
 }
 
 body {
@@ -17,21 +20,49 @@ ul {
 }
 
 li {}
+
 a {
 	text-decoration: none;
 	color: inherit;
 	cursor: pointer;
 }
 
+a.linktext {
+	text-decoration:underline;
+}
+
+i {
+	cursor: pointer;
+}
+
+textarea {
+	resize: none;
+}
+
+input,select,textarea,button {
+	outline: none;
+	border: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 .h-dash {
-	width: 20px !important;
+	width: 32px !important;
 	height: 4px !important;
 	background: #000;
 }
 
 .v-dash {
 	width: 	 4px !important;
-	height: 62px !important;
+	height: 32px !important;
+	margin-top: 4px;
+	margin-left: -12px;
+	margin-right: 8px;
 	background: #000;
 }
 
@@ -42,10 +73,10 @@ floating-content {
 	pointer-events: none;
 }
 
-floating-content > .dev-banner {
+#dev-banner {
 	position: absolute;
-	bottom: 10%;
-	left: 10%;
+	top: 2%;
+	right: 2%;
 	width: 94px;
 	height: 20px;
 	display: flex;
@@ -54,6 +85,7 @@ floating-content > .dev-banner {
 	background: #000;
 	color: #fff;
 	font-size: .5em;
+	font-weight: 300;
 }
 
 side-bar {
@@ -64,8 +96,19 @@ side-bar {
 }
 side-bar #branding {
 	height: 100px;
-	margin-left: 12px;
 	font-size: 1em;
+}
+
+#nav-to-top {
+	position: absolute;
+	left: 10%;
+	bottom: 10%;
+	pointer-events: all;
+	width: 25px;
+	height: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 nav {
@@ -74,16 +117,13 @@ nav {
 	justify-content: flex-start;
 }
 
-nav > ul {
-	margin-top: -4px;
-	margin-left: 8px;
-}
+nav > ul {}
 
 nav > ul > li {
 	margin-bottom: 4px;
 }
 
-content {
+content.webpage {
 	width: 100%;
 	background: #fff;
 	display: flex;
@@ -91,17 +131,85 @@ content {
 	align-items: center;
 }
 
-content > section {
-	height: 500px;
+content.webpage > section {
 	width: 45%;
+	padding-top: 100px;
+	min-width: 450px;
+	min-height: 500px;
 }
 
-content > section > .name {
-	margin-top: 100px;
-	height: 100px;
+content.webpage > section > .title {
 	display: flex;
 	flex-direction: column;
 	font-size: 1em;
+	height: 100px;
+	/* TODO: fix functionality */
+	/*
+	position: sticky;
+	top: 100px;
+	*/
+}
+
+content.webpage > section > .body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	/* TODO: fix functionality */
+	/*
+	position: sticky;
+	top: 200px;
+	*/
+}
+
+#home {
+	height: 550px;
+}
+
+#home #title {
+	font-size: 4em;
+	font-weight: 700;
+	line-height: 50px;
+}
+
+#home #fine-print {
+	margin-left: 25px;
+}
+
+#contact .body {
+ height: 700px;
+}
+
+#contact #title {
+	font-size: 3em;
+	font-weight: 700;
+	margin-left: -4px;
+}
+
+#contact form {
+	width: 100%;
+	margin-top: 20px;
+}
+
+
+#contact form > * {
+	display: block;
+	border-bottom: solid 2px #aaa;
+	width: 90%;
+	margin-top: 10px;
+	padding: 10px;
+	/*  not sure of I want transitions
+	transition: border-bottom 300ms ease;
+	*/
+}
+
+#contact form input[type='text'] {
+	height: 30px;
+	font-size: 16px;
+	letter-spacing: 1px;
+}
+
+#contact form > *:focus {
+	border-bottom: solid 2px #000;
 }
 
 footer {
@@ -109,16 +217,29 @@ footer {
 	background: #000;
 	width: 100vw;
 	height: 50px;
+	font-size: 1em;
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
-	font-size: .8em;
+	justify-content: center;
 }
 
 footer * {
 	color: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+footer > content {
+	width: 50%;
+}
+
+
+footer > content > text {
+	font-size: 10px;
+	float: left;
 }
 
 footer .social-media {
-	margin-right: 15px;
+	float: right;
+	margin-left: 20px;
 }

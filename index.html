@@ -10,7 +10,7 @@
   <body>
 
     <floating-content>
-      <div class="dev-banner">under construction</div>
+      <span id="dev-banner">under construction</span>
 
       <side-bar>
         <div id="branding">
@@ -24,51 +24,113 @@
           <ul>
             <li><a href="#home">home</a></li>
             <li><a href="#projects">projects</a></li>
-            <li><a href="#thoughts">thoughts</a></li>
+            <li><a href="#about">about</a></li>
             <li><a href="#contact">contact</a></li>
           </ul>
         </nav>
-      <side-bar>
+      </side-bar>
+
+      <a id="nav-to-top" href="#home"><i class="fa fa-arrow-up"></i></a>
   </floating-content>
 
-    <content>
+    <content class="webpage">
+
+      <!--
+      <section id="">
+        <content class="title">
+          <text>@id</text>
+          <span class='h-dash'></span>
+        </content>
+
+        <content class="body">
+        </content>
+      </section>
+      -->
 
       <section id="home">
-        <div class="name">
-          <span>Home</span>
+        <content class="title">
+          <text>home</text>
           <span class='h-dash'></span>
-        </div>
+        </content>
+
+        <content class="body">
+          <text id="title">Jordan Bailey</text>
+          <text id="fine-print">
+            <a href="#">Developer</a>
+            <span>//</span>
+            <a href="#">Editor</a>
+            <span>//</span>
+            <a href="#">Idealist</a>
+          </text>
+        </content>
       </section>
+
       <section id="projects">
-        <div class="name">
-          <span>projects</span>
+        <content class="title">
+          <text>projects</text>
           <span class='h-dash'></span>
-        </div>
+        </content>
+
+        <content class="body">
+          <!--TODO gallery-->
+          <gallery>
+          </gallery>
+        </content>
+
       </section>
-      <section id="thoughts">
-        <div class="name">
-          <span>thoughts</span>
-          <span class='h-dash'></span>
-        </div>
-      </section>
+
       <section id="about">
-        <div class="name">
-          <span>contact</span>
+        <content class="title">
+          <text>about me</text>
           <span class='h-dash'></span>
-        </div>
+        </content>
+
+        <content class="body">
+        </content>
+      </section>
+
+      <section id="contact">
+        <content class="title">
+          <text>contact</text>
+          <span class='h-dash'></span>
+        </content>
+
+        <content class="body">
+          <text id="title">Business Inqueries</text>
+          <text id="desc">If you want to work on a project, discuss an idea, or
+            hire me...</text>
+          <form class="" action="index.html" method="post">
+            <input
+              type="text"
+              name="first"
+              value=""
+              autocomplete="name"
+              inputmode="text"
+              placeholder="Name...">
+            <input
+              type="text"
+              name="email"
+              placeholder="E-mail..."
+              autocomplete="email">
+            <textarea rows="4" placeholder="What's up?"></textarea>
+          </form>
+        </content>
       </section>
 
     </content>
+
     <footer>
-      <div class="nav-button to-top"><a href="#home"><i class="fas fa-arrow-up"></i></a></div>
-      <div class="text">AHHHH MY EYES!</div>
-      <div class="media">
+      <content>
+        <text>s/o bubbles</text>
         <span class="social-media">
           <a href="https://instagram.com/asingleday"><i class="fab fa-instagram"></i></a>
         </span>
         <span class="social-media">
           <a href="https://twitter.com/heyrlxn"><i class="fab fa-twitter"></i></a>
-      </span>
+        </span>
+        <span class="social-media">
+          <a href="#"><i class="fab fa-discord"></i></a>
+        </span>
       </div>
     </footer>
   </body>
