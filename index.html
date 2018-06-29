@@ -1,136 +1,137 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>J.B</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/master.css">
+  </head>
+  <body>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/base.css">
-    <link rel="stylesheet" href="css/slidebars.min.css">
-    <link rel="stylesheet" href="css/hamburgers.css">
+    <floating-content>
+      <span id="dev-banner">under construction</span>
 
-    <title>JBailey</title>
-    <link rel="shortcut icon" href="favicon.ico" />
-</head>
-<body>
-  <div id="site" class="nav_hide" canvas="container">
-    <header>
-      <div id="main-img" class='noselect defualt'>
-        <p>&#x270C;&#xFE0F;</p>
-      </div>
+      <side-bar>
+        <div id="branding">
+          <span>J</span>
+          <span>.</span>
+          <span>B</span>
+        </div>
 
-      <button id="nav_button" class="hamburger hamburger--arrow nav_toggle noselect pointer" type="button">
-        <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
-        </span>
-      </button>
-
-      <div class="noselect" id="navigation">
-        <nav>
-          <a href=""><div>projects</div></a>
-          <a href=""><div>bio</div></a>
+        <nav class="main-navigation">
+          <div class="v-dash"></div>
+          <ul>
+            <li><a href="#home">home</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
         </nav>
-      </div>
+      </side-bar>
 
-    </header>
+      <a id="nav-to-top" href="#home"><i class="fa fa-arrow-up"></i></a>
+  </floating-content>
 
-    <content>
-     <!--<div id="uc">
-        <span id='text'>under construction</span>
-        <span id="sign">🚧</span>
-      </div>-->
-      <div class="noselect section" id='section-1'>
-        <div id="title-wrapper">
-          <div id="changingTitle"></div>
-        </div>
-        <span id="d-pointer" class="pointer">&#x1F447;</span>
-      </div>
+    <content class="webpage">
 
-      <div class="noselect section" id='section-2'>
-        <div class="projects">
-          <div class="item" link="projects/squareclick/index.html">Square Click</div></a>
-          <div class="item" link="https://winterbeam.github.io/">Winterbeam</div></a>
-          <div class="item" style="text-decoration: line-through">WYD?</div>
-          <div class="item" style="text-decoration: line-through">lifeless</div>
-        </div>
-      </div>
+      <!--
+      <section id="">
+        <content class="title">
+          <text>@id</text>
+          <span class='h-dash'></span>
+        </content>
 
-      <div id='section-3'></div>
+        <content class="body">
+        </content>
+      </section>
+      -->
+
+      <section id="home">
+        <content class="title">
+          <text>home</text>
+          <span class='h-dash'></span>
+        </content>
+
+        <content class="body">
+          <text id="title">Jordan Bailey</text>
+          <text id="fine-print">
+            <a href="#">Developer</a>
+            <span>//</span>
+            <a href="#">Editor</a>
+            <span>//</span>
+            <a href="#">Idealist</a>
+          </text>
+        </content>
+      </section>
+
+      <section id="projects">
+        <content class="title">
+          <text>projects</text>
+          <span class='h-dash'></span>
+        </content>
+
+        <content class="body">
+          <!--TODO gallery-->
+          <gallery>
+          </gallery>
+        </content>
+
+      </section>
+
+      <section id="about">
+        <content class="title">
+          <text>about me</text>
+          <span class='h-dash'></span>
+        </content>
+
+        <content class="body">
+        </content>
+      </section>
+
+      <section id="contact">
+        <content class="title">
+          <text>contact</text>
+          <span class='h-dash'></span>
+        </content>
+
+        <content class="body">
+          <text id="title">Business Inqueries</text>
+          <text id="desc">If you want to work on a project, discuss an idea, or
+            hire me...</text>
+          <form class="" action="index.html" method="post">
+            <input
+              type="text"
+              name="first"
+              value=""
+              autocomplete="name"
+              inputmode="text"
+              placeholder="Name...">
+            <input
+              type="text"
+              name="email"
+              placeholder="E-mail..."
+              autocomplete="email">
+            <textarea rows="4" placeholder="What's up?"></textarea>
+          </form>
+        </content>
+      </section>
+
     </content>
 
-
-    <footer></footer>
-  </div>
-
-  <div id="mobile_menu" off-canvas="id-1 right reveal">
-    <div class='logo noselect default'><span class="icon">✌️</span><span class='text'>:victory-hand:</span></div>
-    <ul>
-      <li class="noselect"><div class='pointer'><span>🏠</span>home</div></li>
-      <li class="noselect"><div class='pointer'><span>📁</span>projects</div></li>
-      <li class="noselect"><div class='pointer'><span>👻</span>about me</div></li>
-      <li class="noselect"><div class='pointer'><span>📇</span>contact</div></li>
-      <li class="noselect"><div class='nav_hide pointer'><span>❌</span>close</div></li>
-    </ul>
-  </div>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/slidebars.min.js"></script>
-<script>
-(function ($) {
-  var controller = new slidebars();
-  controller.init();
-
-  var burger = $('#nav_button');
-  function nav_interact(event) {
-    // Stop default action and bubbling
-    event.stopPropagation();
-
-    if(event.data.action == 'toggle') {
-      burger.toggleClass('is-active');
-      controller.toggle('id-1');
-      return;
-    }
-
-    if(event.data.action == 'show') {
-      burger.addClass('is-active');
-      controller.open('id-1');
-      return;
-    }
-
-    if(event.data.action == 'hide') {
-      burger.removeClass('is-active');
-      controller.close('id-1');
-      return;
-    }
-  }
-
-  $('.nav_toggle').on('click', {action: 'toggle'}, nav_interact);
-  $('.nav_show').on('click', {action: 'show'}, nav_interact);
-  $('.nav_hide').on('click', {action: 'hide'}, nav_interact);
-
-  var container = $('html, body'),
-      section1  = $('#section-1'),
-      section2  = $('#section-2'),
-      section3  = $('#section-3');
-
-  $('#d-pointer').on('click', function() {
-    container.animate({
-      scrollTop: section2.offset().top + Math.abs(section1.offset().top)
-    }, 1500, "easeInOutQuart");
-  });
-
-  $('.item').on('click', function() {
-    section3.html('<object id="prj" data="'+this.getAttribute('link')+'"/>')
-    container.animate({
-      scrollTop: section3.offset().top + Math.abs(section2.offset().top) + Math.abs(section1.offset().top)
-    }, 1500, "easeInOutQuart")
-  })
-
-
-})(jQuery);
-
-</script>
-
-
-</body>
+    <footer>
+      <content>
+        <text>s/o bubbles</text>
+        <span class="social-media">
+          <a href="https://instagram.com/asingleday"><i class="fab fa-instagram"></i></a>
+        </span>
+        <span class="social-media">
+          <a href="https://twitter.com/heyrlxn"><i class="fab fa-twitter"></i></a>
+        </span>
+        <span class="social-media">
+          <a href="#"><i class="fab fa-discord"></i></a>
+        </span>
+      </div>
+    </footer>
+  </body>
 </html>
