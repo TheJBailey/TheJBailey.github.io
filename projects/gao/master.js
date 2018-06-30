@@ -1,4 +1,6 @@
 (function() {
   var video = document.getElementsByTagName('video')[0];
-  video.play();
+  video.onmouseover = function() {
+    if(!video.paused) video.play();
+  }
 })();
