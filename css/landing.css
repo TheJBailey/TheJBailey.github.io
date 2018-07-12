@@ -1,0 +1,83 @@
+* {
+	padding:0;
+	margin:0;
+	font-family: 'Work Sans', sans-serif;
+	color: inherit;
+	border-color: inherit;
+	cursor: default;
+	text-decoration: none;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	background: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: black;
+	border-color: black;
+}
+
+content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.border {
+	width: 500px;
+	height: 200px;
+	border: solid 2px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.noselect {
+    -webkit-user-select: none; /* Safari, iOS, and Android */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.hover {
+	transition: color 200ms ease;
+	cursor: pointer;
+}
+
+.hover:hover {
+	color: black !important;
+}
+
+#site {
+	margin: 0 0 5px 5px;
+	color: rgba(.2,.2,.2,.5);
+}
+
+#title {
+	font-size: 2.5em;
+	font-weight: 400;
+}
+
+#sub {
+ font-size: 1.2em;
+ font-weight: 300;
+ letter-spacing: 2px;
+}
+
+#social {
+	margin: 5px 5px 0 0;
+	color: rgba(.2,.2,.2,.5);
+	align-self: flex-end;
+}
+
+@media screen and (max-width:500px) {
+	.border {
+		width: 90vw;
+		background: red;
+
+	}
+}
