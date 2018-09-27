@@ -13,38 +13,34 @@ a {
 	text-decoration: none;
 }
 
-ul {
-	list-style-type: none;
-}
-
-li {
-	display: inline-block;
-}
-
 body {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
 	background: #DDDDDD;
 }
 
-body > content {
+content {
+	width: 450px;
+	margin-top: 180px;
 }
 
-header {
+content > img {}
 
+content > section {
 }
 
-header > img {
-
+content > section > line {
+	white-space: nowrap;
 }
 
-section > ul {
-	width: 100%;
-	margin: 50px 0;
+.left {
+	color: #AD647B;
+	font-style: italic;
+	margin: 50px 50px 0 0;
+	display: inline-block;
 }
 
 .right {
@@ -52,10 +48,5 @@ section > ul {
 }
 
 .right > a {
-	margin: 0 0 0 50px;
-}
-
-.sub {
-	color: #AD647B;
-	font-style: italic;
+	margin-right: 50px;
 }
