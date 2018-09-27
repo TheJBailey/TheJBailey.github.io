@@ -1,0 +1,61 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Futura', sans-serif;
+	color: #611828;
+	-webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	display: inline-block;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background: #DDDDDD;
+}
+
+body > content {
+}
+
+header {
+
+}
+
+header > img {
+
+}
+
+section > ul {
+	width: 100%;
+	margin: 50px 0;
+}
+
+.right {
+	display: inline-block;
+}
+
+.right > a {
+	margin: 0 0 0 50px;
+}
+
+.sub {
+	color: #AD647B;
+	font-style: italic;
+}
