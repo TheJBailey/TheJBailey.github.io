@@ -31,7 +31,7 @@ var title = {
   y: 90,
   text: 'square click',
   size:'72',
-  font:'Montserrat'
+  font:'Consolas'
 }
 
 //TODO maybe
