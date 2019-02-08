@@ -51,7 +51,7 @@ var newObj = {
 function createEntry(data) {
   var parser = new DOMParser()
   var text = parser.parseFromString(data,"text/html").body.innerText
-  //console.log(text);
+  console.log('loaded data');
   var obj = newObj
   obj.name = /MSDS Name:(.*)/g.exec(text)[1]
   obj.weight = /Molecular Weight:(.*)/g.exec(text)[1]
@@ -60,7 +60,6 @@ function createEntry(data) {
   obj.phys.density = /Density:(.*)/g.exec(text)[1]
   obj.phys.boil = /Boiling Point:(.*)/g.exec(text)[1].trim()
   info_temp = /Health:(.*)/g.exec(text)[0].split(';') //TODO substring parse
-  console.log(info_temp[2].trim().split(' ')[1]);
   obj.info = {
     health:info_temp[0].trim().split(' ')[1],
     flame:info_temp[1].trim().split(' ')[1],
@@ -108,8 +107,10 @@ function createEntry(data) {
   info.appendChild(aid)
   wrapper.appendChild(top)
   wrapper.appendChild(info)
+  wrapper.appendChild(create('br', 'break', ''))
 
-  document.body.appendChild(wrapper)
+  console.log('data');
+  document.getElementById('content').appendChild(wrapper)
   console.log('nodes added')
 }
 

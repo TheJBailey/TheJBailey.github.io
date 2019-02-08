@@ -5,19 +5,39 @@
     <title>MSDS Parser</title>
     <script src="..\..\js\lib\jquery.min.js" charset="utf-8"></script>
     <script src="msds-parser.js" charset="utf-8"></script>
+    <style media="screen">
+      body {
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+        max-width: 1100px;
+        position: relative;
+      }
+      #input-wrapper {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+      #submit {
+        padding: 0px 5px;
+        border: 1px black solid;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
-    <div class="add">
-      <input id="field" type="text" name="" value="">
-      <span id="submit">add</span>
+    <div id="content">
+      <div id="input-wrapper">
+        <input id="field" type="text" name="" value="">
+        <span id="submit">add</span>
+      </div>
     </div>
-    
-    <!--
-    [Name][Chemical Formula] [CAS #]
-    MW: [Molecular Weight]
-    Phys. Properties: m.p. = [Melting Point], BP = [Boiling Point], d = [Density]
-    Safety Info: Health - [Health #], Fire - [Flammability #], Reactivity - [Instability #]
-    First Aid: [First Aid info]
-    -->
   </body>
 </html>
