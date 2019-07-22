@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000;
+}
+
+#focuscap {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  border: none;
+  text-align: center;
+  visibility: hidden;
+}
