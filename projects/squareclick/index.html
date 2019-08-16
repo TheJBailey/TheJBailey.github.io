@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/hover.css">
-    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/lib/jquery.min.js"></script>
     <style>
       .noselect {
         -webkit-touch-callout: none; /* iOS Safari */
@@ -39,18 +39,18 @@
         <span>change mode</span>
       </div>
     </div>
+
+    <script src="js/mainloop.min.js"></script>
+    <script src="../../js/lib/keyboard.min.js"></script>
+    <script src="js/TileMap.js"></script>
+    <script src="js/Tile.js"></script>
+    <script src="js/keys.js"></script>
+    <script src="js/menus.js"></script>
+    <script src='js/game.js'></script>
+
+    <script type="text/javascript">
+      MainLoop.setBegin(begin).setUpdate(update).setDraw(render).setEnd(end).start();
+    </script>
   </body>
-
-  <script src="js/mainloop.min.js"></script>
-  <script src="../../js/keyboard.min.js"></script>
-  <script src="js/TileMap.js"></script>
-  <script src="js/Tile.js"></script>
-  <script src="js/keys.js"></script>
-  <script src="js/menus.js"></script>
-  <script src='js/game.js'></script>
-
-  <script type="text/javascript">
-    MainLoop.setBegin(begin).setUpdate(update).setDraw(render).setEnd(end).start();
-  </script>
 
 </html>

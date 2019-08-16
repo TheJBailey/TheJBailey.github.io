@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: black;
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    cursor: default;
+}
+
+a {
+    cursor: pointer;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    min-width: 400px;
+    min-height: 400px;
+}
+
+#content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#title {
+    height: 200px;
+}
+
+#title h1 {
+    font-size: 64px;
+}
+
+#title h1 span {
+    font-size: 24px;
+    color: #bbb;
+}
+
+#title h2 {
+    font-size: 28px;
+}
+
+#title a {
+    color: #68d;
+    transition: color 150ms ease-in-out;
+}
+
+#title a:hover {
+    color: #44f;
+}
+
+#btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    text-align: center;
+    font-size: 16px;
+    width: 170px;
+    height: 50px;
+    border: 2px solid #79d;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+    transition: border-color 150ms ease-in-out;
+    cursor: pointer;
+}
+
+.button * {
+    cursor: inherit;
+}
+
+.button:hover {
+    border-color: #44f;
+}
+
+#soontm {
+    font-size: 20px;
+}
+
+.soon {
+    border-color: #aaa !important;
+    cursor: wait !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    width: 100%;
+    font-size: 12px;
+}
+
+#footer * {
+    text-decoration: none;
+}

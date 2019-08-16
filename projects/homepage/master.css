@@ -1,0 +1,55 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Futura', sans-serif;
+	color: #611828;
+	-webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background: #DDDDDD;
+	overflow-x: hidden;
+}
+
+content {
+	position: absolute;
+	width: 450px;
+	margin: 0 20px;
+	top: 10%;
+}
+
+content > img {}
+
+content > section {
+}
+
+content > section > line {
+	white-space: nowrap;
+}
+
+.left {
+	color: #AD647B;
+	font-style: italic;
+	margin: 50px 50px 0 0;
+	display: inline-block;
+}
+
+.right {
+	display: inline-block;
+}
+
+.right > a {
+	margin-right: 50px;
+}
