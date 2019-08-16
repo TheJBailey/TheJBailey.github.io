@@ -1,0 +1,23 @@
+* {
+  color: white;
+}
+
+.alt-text {
+  color: black;
+}
+
+.bg {
+  background-color: black;
+}
+
+.fg {
+  background-color: black;
+}
+
+.accent {
+  background-color: #fb2;
+}
+
+.dark-accent {
+  background-color: #02a;
+}
